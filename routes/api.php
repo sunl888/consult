@@ -14,6 +14,7 @@ use App\Http\Controllers\Api;
 |
 */
 
+
 /**
  * @api {GET} /wx_user/me/:openid 查询用户信息
  * @apiGroup user
@@ -74,3 +75,4 @@ $api->post('issue/store', "IssueController@store");
  * @apiVersion 0.0.1
  */
 $api->get('issue/show',"IssueController@show");
+
