@@ -27,6 +27,7 @@ class IssueController extends Controller
         return Issue::with('Wx_users')
             ->with('Comment')
             ->where('comment_id','<>','0')
+            ->orWhere('deleted_at','<>',null)
             ->orderBy('created_at', 'desc')
             ->get();
     }
@@ -46,6 +47,7 @@ class IssueController extends Controller
             $data = [
                 'title' =>$request->get('title'),
                 'description' =>$request->get('description'),
+                //wx_user_id当用户匿名提问时传0进来,否则传当前id
                 'wx_user_id' =>$request->get('wx_user_id'),
             ];
             $issue = Issue::create($data);

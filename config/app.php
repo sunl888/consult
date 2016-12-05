@@ -180,6 +180,7 @@ return [
 
         //
         Dingo\Api\Provider\LaravelServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,//跨域请求
     ],
 
     /*

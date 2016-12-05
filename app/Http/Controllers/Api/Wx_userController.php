@@ -15,11 +15,12 @@ class Wx_userController extends Controller
         'openid' =>'required|unique:wx_users,openid',
     ];
     /**
-     * @param $openid 通过openid尝试查询用户信息
+     * @param $openid 通过openid尝试查询用户信息以及他提问的所有问题
      * @return mixed 返回空值表示数据库中没有该用户信息
      */
-    public function me($openid){
-        $wx_user = Wx_users::where(['openid'=>$openid])->first();
+    public function me($openid=null){
+        $wx_user = Wx_users::with('Issue')->where(['openid'=>$openid])->first();
+        empty($wx_user) && $wx_user=[];
         return $wx_user;
     }
 

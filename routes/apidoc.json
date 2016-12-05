@@ -1,0 +1,20 @@
+{
+  "name": "招生咨询文档",
+  "version": "0.0.1",
+  "description": "考生咨询网站相关api文档",
+  "title": "招生咨询api说明文档",
+  "url" : "http://api.consult.dev",
+  "sampleUrl": "http://api.consult.dev",
+  "header": {
+    "title": "招生咨询",
+    "filename": "header.md"
+  },
+  "footer": {
+    "title": "关于我们",
+    "filename": "footer.md"
+  },
+  "template": {
+  	"withCompare": true,
+  	"withGenerator": true
+  }
+}
