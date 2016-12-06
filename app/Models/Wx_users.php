@@ -26,7 +26,7 @@ class Wx_users extends Model
     ];
 
     //一个用户可以问多个问题
-    public function issue(){
-        return $this->hasMany('App\Models\Issue', 'wx_user_id');
+    public function issues(){
+        return $this->hasOne('App\Models\Issue');
     }
 }

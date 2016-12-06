@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->string('answer')->comment('对某个问题的回复');
             $table->integer('issue_id');
             $table->integer('uid')->comment('回复者信息');
-            $table->integer('praise')->comment('赞');
+            $table->integer('praise')->comment('赞')->default(0);
             $table->timestamps();
         });
     }

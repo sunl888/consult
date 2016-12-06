@@ -10,10 +10,10 @@ use App\Http\Controllers\Api;
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
+| 生成文档:
 | apidoc -i routes/ -o doc/
 |
 */
-
 
 /**
  * @api {GET} /wx_user/me/:openid 查询用户信息

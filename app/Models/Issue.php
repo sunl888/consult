@@ -16,8 +16,9 @@ class Issue extends Model
     public function comment(){
         return $this->hasOne('App\Models\Comment');
     }
+
     //一个问题对应一个用户
     public function wx_users(){
-        return $this->belongsTo('App\Models\Wx_users','id');
+        return $this->belongsTo('App\Models\Wx_users','wx_user_id');
     }
 }

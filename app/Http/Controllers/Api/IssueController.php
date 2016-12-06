@@ -26,7 +26,7 @@ class IssueController extends Controller
 
         return Issue::with('Wx_users')
             ->with('Comment')
-            ->where('comment_id','<>','0')
+            ->has('comment','<>',null)
             ->orWhere('deleted_at','<>',null)
             ->orderBy('created_at', 'desc')
             ->get();
