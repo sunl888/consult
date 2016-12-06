@@ -25,7 +25,6 @@ class Wx_users extends Model
         'old_school'
     ];
 
-    //一个用户可以问多个问题
     public function issues(){
         return $this->hasOne('App\Models\Issue');
     }
