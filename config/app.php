@@ -181,7 +181,8 @@ return [
         //
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,//跨域请求
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Orangehill\Iseed\IseedServiceProvider::class,//导出数据库表到seed
     ],
 
     /*

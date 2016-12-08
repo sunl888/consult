@@ -11,7 +11,8 @@
         "barryvdh/laravel-cors": "^0.8.2",
         "tymon/jwt-auth": "^1.0@dev",
         "prettus/l5-repository": "^2.6",
-        "metricloop/laravel-transformer-maker": "^1.0"
+        "metricloop/laravel-transformer-maker": "^1.0",
+        "orangehill/iseed": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
