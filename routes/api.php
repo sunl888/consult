@@ -15,6 +15,9 @@ use App\Http\Controllers\Api;
 |
 */
 
+
+
+///////////////////Wx_user////////////////////////
 /**
  * @api {GET} /wx_user/me/:openid 查询用户信息
  * @apiGroup user
@@ -23,7 +26,6 @@ use App\Http\Controllers\Api;
  * @apiVersion 0.0.1
  */
 $api->get('wx_user/me/{openid}' , "Wx_userController@me");
-
 /**
  * @api {GET} /wx_user/linkage/:parent_id 省市三级联动
  * @apiGroup user
@@ -32,7 +34,6 @@ $api->get('wx_user/me/{openid}' , "Wx_userController@me");
  * @apiVersion 0.0.1
  */
 $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
-
 /**
  * @api {POST} /wx_user/store 保存用户信息
  * @apiGroup user
@@ -57,6 +58,11 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
  */
 $api->post('wx_user/store', "Wx_userController@store");
 
+
+
+
+
+/////////////////////Issue/////////////////////////////
 /**
  * @api {POST} /issue/store 提交问题
  * @apiGroup issue
@@ -67,7 +73,6 @@ $api->post('wx_user/store', "Wx_userController@store");
  * @apiParam {Number} wx_user_id 用户id(如果匿名提问只需将本字段传0即可)
  */
 $api->post('issue/store', "IssueController@store");
-
 /**
  * @api {GET} /issue/show 显示已回复的问题
  * @apiGroup issue
@@ -76,3 +81,46 @@ $api->post('issue/store', "IssueController@store");
  */
 $api->get('issue/show',"IssueController@show");
 
+
+
+
+////////////////////Admin////////////////////////////
+/**
+ * @api {POST} /admin/login 管理员登录
+ * @apiGroup Admin
+ * @apiDescription 管理员登录接口
+ * @apiVersion 0.0.1
+ * @apiParam {String} name 用户名
+ * @apiParam {String} password 密码
+ */
+$api->post('admin/login', "AuthenticateController@authenticate");
+/**
+ * @api {POST} /admin/create 管理员注册
+ * @apiGroup Admin
+ * @apiDescription 管理员注册接口
+ * @apiVersion 0.0.1
+ * @apiParam {String} name 用户名
+ * @apiParam {String} password 密码
+ * @apiParam {String} email 邮箱
+ */
+$api->post('admin/create', "AuthenticateController@create");
+/**
+ * @api {GET} /admin/refresh_token 刷新token
+ * @apiGroup Admin
+ * @apiDescription 刷新token接口
+ * @apiVersion 0.0.1
+ * @apiParam {String} token 旧的token
+ */
+$api->get('admin/refresh_token', "AuthenticateController@refreshToken");
+$api->group(['middleware' => 'jwt.auth'], function ($api) {
+    /**
+     * @api {GET} /admin/me 获取管理员信息
+     * @apiGroup Admin
+     * @apiDescription 获取管理员信息
+     * @apiVersion 0.0.1
+     * @apiParam {String} token token
+     */
+    $api->get('admin/me', "AuthenticateController@getAuthenticatedUser");
+    $api->get('admin/lists', "CommentController@lists");
+
+});

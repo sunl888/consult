@@ -23,11 +23,10 @@ class IssueController extends Controller
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function show(){
-
         return Issue::with('Wx_users')
             ->with('Comment')
             ->has('comment','<>',null)
-            ->orWhere('deleted_at','<>',null)
+            ->orWhere(['deleted_at'=>null])
             ->orderBy('created_at', 'desc')
             ->get();
     }

@@ -1,6 +1,143 @@
 [
   {
     "type": "GET",
+    "url": "/admin/me",
+    "title": "获取管理员信息",
+    "group": "Admin",
+    "description": "<p>获取管理员信息</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+    "name": "GetAdminMe",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/me"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/admin/refresh_token",
+    "title": "刷新token",
+    "group": "Admin",
+    "description": "<p>刷新token接口</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>旧的token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+    "name": "GetAdminRefresh_token",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/refresh_token"
+      }
+    ]
+  },
+  {
+    "type": "POST",
+    "url": "/admin/create",
+    "title": "管理员注册",
+    "group": "Admin",
+    "description": "<p>管理员注册接口</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>用户名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>邮箱</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+    "name": "PostAdminCreate",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/create"
+      }
+    ]
+  },
+  {
+    "type": "POST",
+    "url": "/admin/login",
+    "title": "管理员登录",
+    "group": "Admin",
+    "description": "<p>管理员登录接口</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>用户名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>密码</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+    "name": "PostAdminLogin",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/login"
+      }
+    ]
+  },
+  {
+    "type": "GET",
     "url": "/issue/show",
     "title": "显示已回复的问题",
     "group": "issue",

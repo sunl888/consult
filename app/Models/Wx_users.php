@@ -15,7 +15,6 @@ class Wx_users extends Model
         'nickname',
         'sex',
         'headimgurl',
-        /*'is_init',*/
         'name',
         'phone',
         'province',
