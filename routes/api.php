@@ -7,17 +7,10 @@ use App\Http\Controllers\Api;
 | API Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-| 生成文档:
-| apidoc -i routes/ -o doc/
+| 生成文档命令:  apidoc -i routes/ -o doc/
 |
 */
 
-
-
-///////////////////Wx_user////////////////////////
 /**
  * @api {GET} /wx_user/me/:openid 查询用户信息
  * @apiGroup user
@@ -58,11 +51,6 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
  */
 $api->post('wx_user/store', "Wx_userController@store");
 
-
-
-
-
-/////////////////////Issue/////////////////////////////
 /**
  * @api {POST} /issue/store 提交问题
  * @apiGroup issue
@@ -77,12 +65,9 @@ $api->post('issue/store', "IssueController@store");
  * @api {GET} /issue/show 显示已回复的问题
  * @apiGroup issue
  * @apiDescription 显示所有管理员已回复的问题
- * @apiVersion 0.0.1
+ * @apiVersion 0.0.3
  */
 $api->get('issue/show',"IssueController@show");
-
-
-
 
 ////////////////////Admin////////////////////////////
 /**
@@ -112,6 +97,7 @@ $api->post('admin/create', "AuthenticateController@create");
  * @apiParam {String} token 旧的token
  */
 $api->get('admin/refresh_token', "AuthenticateController@refreshToken");
+
 $api->group(['middleware' => 'jwt.auth'], function ($api) {
     /**
      * @api {GET} /admin/me 获取管理员信息
@@ -121,6 +107,59 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      * @apiParam {String} token token
      */
     $api->get('admin/me', "AuthenticateController@getAuthenticatedUser");
+    /**
+     * @api {GET} /admin/lists 获取所有的问题
+     * @apiGroup Admin
+     * @apiDescription 获取所有的问题以及问题的详细信息
+     * @apiVersion 0.0.1
+     * @apiParam {String} token token
+     */
     $api->get('admin/lists', "CommentController@lists");
+    /**
+     * @api {POST} /admin/comment/store 回复某个问题
+     * @apiGroup Admin
+     * @apiDescription 通过issue_id回复某个问题
+     * @apiVersion 0.0.1
+     * @apiParam {String} token token
+     * @apiParam {String} issue_id 问题对应的id
+     * @apiParam {String} answer 回复的详情
+     */
+    $api->post('admin/comment/store', "CommentController@store");
+    /**
+     * @api {GET} /admin/issue/softdelete 对某个问题软删除
+     * @apiGroup Admin
+     * @apiDescription 对某个问题软删除
+     * @apiVersion 0.0.1
+     * @apiParam {String} token token
+     * @apiParam {String} issue_id 问题对应的id
+     */
+    $api->get('admin/issue/softdelete', "CommentController@softdelete");
+    /**
+     * @api {GET} /admin/issue/delete 对某个问题强制删除
+     * @apiGroup Admin
+     * @apiDescription 对某个问题强制删除
+     * @apiVersion 0.0.1
+     * @apiParam {String} token token
+     * @apiParam {String} issue_id 问题对应的id
+     */
+    $api->get('admin/issue/delete', "CommentController@delete");
+    /**
+     * @api {GET} /admin/issue/list_only_trashed 只显示被软删除的问题
+     * @apiGroup Admin
+     * @apiDescription 只显示被软删除的问题
+     * @apiVersion 0.0.1
+     * @apiParam {String} token token
+     */
+    $api->get('admin/issue/list_only_trashed', "CommentController@only_trashed");
+
+    /**
+     * @api {GET} /admin/issue/restore 恢复被软删除的问题
+     * @apiGroup Admin
+     * @apiDescription 恢复被软删除的问题
+     * @apiVersion 0.0.1
+     * @apiParam {String} token token
+     * @apiParam {String} issue_id 问题的id
+     */
+    $api->get('admin/issue/restore', "CommentController@restore");
 
 });

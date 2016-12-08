@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Issue;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -19,16 +20,22 @@ class IssueController extends Controller
     ];
 
     /**
-     * 按时间降序显示所有的已回答的问题
+     * 显示所有的已回答的问题
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function show(){
-        return Issue::with('Wx_users')
+        $issue = Issue::with('Wx_users')
             ->with('Comment')
-            ->has('comment','<>',null)
-            ->orWhere(['deleted_at'=>null])
+            ->where('comment_id','<>',0)
+            ->where(['deleted_at'=>null])
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->get()->toArray();
+        //显示回复者信息
+        for ($i=0;$i<count($issue);$i++) {
+            if($issue[$i]['comment'] !=null)
+                $issue[$i]['comment']['anthor'] = User::where(['id'=>$issue[$i]['comment']['uid'] ])->first();
+        }
+        return $issue;
     }
 
     /**
