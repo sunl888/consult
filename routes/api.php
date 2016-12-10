@@ -8,7 +8,7 @@ use App\Http\Controllers\Api;
 |--------------------------------------------------------------------------
 |
 | 生成文档命令:  apidoc -i routes/ -o doc/
-|  hello hook test
+|  a
 */
 
 /**
