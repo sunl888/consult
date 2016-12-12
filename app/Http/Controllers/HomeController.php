@@ -26,7 +26,7 @@ class HomeController extends Controller
     //            echo $echoStr;
     //            exit;
     //        }
-        header($this->get_authorize_url('http://www.baidu.com'));
+        //header($this->get_authorize_url('http://www.baidu.com'));
         //redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=$this->appId&redirect_uri=http://www.baidu.com&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
     }
     /**
@@ -38,7 +38,7 @@ class HomeController extends Controller
     public function get_authorize_url($redirect_uri = '', $state = '')
     {
         $redirect_uri = urlencode($redirect_uri);
-        return "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->app_id}&redirect_uri={$redirect_uri}&response_type=code&scope=snsapi_userinfo&state={$state}#wechat_redirect";
+        header( "Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->app_id}&redirect_uri={$redirect_uri}&response_type=code&scope=snsapi_userinfo&state={$state}#wechat_redirect");
     }
 
 
