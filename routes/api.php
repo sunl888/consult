@@ -69,6 +69,8 @@ $api->post('issue/store', "IssueController@store");
  */
 $api->get('issue/show',"IssueController@show");
 
+
+
 ////////////////////Admin////////////////////////////
 /**
  * @api {POST} /admin/login 管理员登录
@@ -165,4 +167,4 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
 
 });
 
-$api->any('wechat', "HomeController@getSignPackage");
+//$api->any('wechat', "HomeController@getSignPackage");
