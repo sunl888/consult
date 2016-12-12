@@ -34,6 +34,5 @@ class HomeController extends Controller
 //            exit;
 //        }
         redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->appId}&redirect_uri=http://www.baidu.com&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
-        return view('index');
     }
 }
