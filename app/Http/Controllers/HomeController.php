@@ -26,8 +26,7 @@ class HomeController extends Controller
     //            echo $echoStr;
     //            exit;
     //        }
-        return redirect("http://www.baidu.com");
-        //redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=$this->appId&redirect_uri=http://www.baidu.com&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
+        return redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=$this->appId&redirect_uri=http://www.baidu.com&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
     }
     /**
      * 获取微信授权链接
