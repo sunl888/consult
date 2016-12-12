@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //$this->middleware('auth');
+    private $appId;
+    private $appSecret;
+    private $token;
+
+    public function __construct() {
+        /*$this->appId = $request->get('appId');
+        $this->appSecret = $request->get('appSecret');*/
+
     }
 
     /**
@@ -23,6 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $echoStr = $_GET["echostr"];
+        $signature = $_GET["signature"];
+        $timestamp = $_GET["timestamp"];
+        $nonce = $_GET["nonce"];
+        $token = "wqer";
+        $tmpArr = array($token, $timestamp, $nonce);
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode($tmpArr);
+        $tmpStr = sha1($tmpStr);
+        if ($tmpStr == $signature) {
+            echo $echoStr;
+            exit;
+        }
+        // return view('index');
     }
 }

@@ -162,4 +162,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/issue/restore', "CommentController@restore");
 
+
 });
+
+$api->any('wechat', "HomeController@getSignPackage");
