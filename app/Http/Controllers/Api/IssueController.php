@@ -29,7 +29,8 @@ class IssueController extends Controller
             ->where('comment_id','<>',0)
             ->where(['deleted_at'=>null])
             ->orderBy('created_at', 'desc')
-            ->get()->toArray();
+            ->get()
+            ->toArray();
         //显示回复者信息
         for ($i=0;$i<count($issue);$i++) {
             if($issue[$i]['comment'] !=null)
@@ -54,7 +55,7 @@ class IssueController extends Controller
                 'title' =>$request->get('title'),
                 'description' =>$request->get('description'),
                 //wx_user_id当用户匿名提问时传0进来,否则传当前id
-                'wx_user_id' =>$request->get('wx_user_id'),
+                'wx_user_id' =>empty($request->get('wx_user_id'))?0:$request->get('wx_user_id'),
             ];
             $issue = Issue::create($data);
             if(!$issue){

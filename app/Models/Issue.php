@@ -31,8 +31,4 @@ class Issue extends Model
     public function wx_users(){
         return $this->belongsTo('App\Models\Wx_users','wx_user_id');
     }
-
-    /*public function user(){
-        return $this->hasManyThrough('App\Models\User', 'App\Models\Comment', 'uid', 'id');
-    }*/
 }
