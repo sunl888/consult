@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function get_authorize_url($redirect_uri = '', $state = '')
     {
         $redirect_uri = urlencode($redirect_uri);
-        return "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->app_id}&redirect_uri={$redirect_uri}&response_type=code&scope=snsapi_userinfo&state={$state}#wechat_redirect";
+        return "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->app_id}&redirect_uri={$redirect_uri}&response_type=code&scope=snsapi_base&state={$state}#wechat_redirect";
     }
 
 
