@@ -34,7 +34,7 @@ class HomeController extends Controller
      * @param string $redirect_uri 跳转地址
      * @param mixed $state 参数
      */
-    public function get_authorize_url($redirect_uri = '', $state = '')
+    public function get_authorize_url($redirect_uri = '', $state = 'STATE')
     {
         $redirect_uri = urlencode($redirect_uri);
         return "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->app_id}&redirect_uri={$redirect_uri}&response_type=code&scope=snsapi_base&state={$state}#wechat_redirect";
