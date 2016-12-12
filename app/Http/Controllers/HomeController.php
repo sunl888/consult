@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
+    private $appId = 'wx9bb5b19486ee58df';
     public function __construct() {
         /*$this->appId = $request->get('appId');
         $this->appSecret = $request->get('appSecret');*/
@@ -33,7 +33,7 @@ class HomeController extends Controller
 //            echo $echoStr;
 //            exit;
 //        }
-        print_r($_SERVER);
+        redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->appId}&redirect_uri=http://www.baidu.com&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect")
         return view('index');
     }
 }
