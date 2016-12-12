@@ -390,7 +390,7 @@ define({ "api": [
             "type": "Number",
             "optional": false,
             "field": "wx_user_id",
-            "description": "<p>用户id(如果匿名提问只需将本字段传0即可)</p>"
+            "description": "<p>用户id(存储在localStore中,没有则跳转到填写信息页面,如果用户选择跳过则表示匿名提问)</p>"
           }
         ]
       }
@@ -435,71 +435,14 @@ define({ "api": [
     ]
   },
   {
-    "type": "GET",
-    "url": "/wx_user/me/:openid",
-    "title": "查询用户信息",
-    "group": "user",
-    "description": "<p>通过微信的openid尝试请求用户信息以及它提过的问题</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "openid",
-            "description": "<p>用户的标志,对当前公众号唯一,用来确定登陆者的身份</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.1",
-    "filename": "routes/api.php",
-    "groupTitle": "user",
-    "name": "GetWx_userMeOpenid",
-    "sampleRequest": [
-      {
-        "url": "http://api.consult.dev/wx_user/me/:openid"
-      }
-    ]
-  },
-  {
     "type": "POST",
     "url": "/wx_user/store",
     "title": "保存用户信息",
     "group": "user",
-    "description": "<p>如果数据库中没有用户信息则让用户填写相关信息并保存到数据库中.</p>",
+    "description": "<p>如localStore中没有用户信息则让用户填写相关信息并保存到数据库中.</p>",
     "parameter": {
       "fields": {
         "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "openid",
-            "description": "<p>用户的标志,对当前公众号唯一,用来确定登陆者的身份</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "nickname",
-            "description": "<p>用户昵称</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "sex",
-            "description": "<p>年龄</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "headimgurl",
-            "description": "<p>用户图像链接</p>"
-          },
           {
             "group": "Parameter",
             "type": "String",
@@ -552,7 +495,7 @@ define({ "api": [
         ]
       }
     },
-    "version": "0.0.1",
+    "version": "1.0.1",
     "error": {
       "examples": [
         {

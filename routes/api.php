@@ -28,6 +28,7 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
  * @apiParam {String} province 省份
  * @apiParam {String} city 城市
  * @apiParam {String} area 地区
+ * #apiParam {String} science 文科or理科
  * @apiParam {Number} course 成绩
  * @apiParam {String} old_school 所在学校
  * @apiVersion 1.0.1
