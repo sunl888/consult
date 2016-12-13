@@ -51,12 +51,14 @@ $api->post('wx_user/store', "Wx_userController@store");
  */
 $api->post('issue/store', "IssueController@store");
 /**
- * @api {GET} /issue/show 显示已回复的问题
+ * @api {GET} /issue/show/:offset/:limit 显示已回复的问题
  * @apiGroup issue
  * @apiDescription 显示所有管理员已回复的问题
+ * @apiParam {Number} offset 偏移量 默认0
+ * @apiParam {Number} limit 显示的个数 默认5
  * @apiVersion 0.0.3
  */
-$api->get('issue/show',"IssueController@show");
+$api->get('issue/show/{offset?}/{limit?}',"IssueController@show");
 
 
 ////////////////////Admin////////////////////////////

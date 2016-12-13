@@ -15,7 +15,7 @@ class Wx_userController extends Controller
         //'openid' =>'required|unique:wx_users,openid',
         'name' =>'required',
         'email' =>'email',
-        'phone'=>'regex:/^1[34578][0-9]{9}$/',
+        'phone'=>['required','regex:/^1[34578][0-9]{9}$/'],
 
         //'email' =>['required_with:email','email']//当email有值的情况下验证其是否合法
     ];

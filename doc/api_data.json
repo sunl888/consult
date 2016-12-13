@@ -347,17 +347,37 @@
   },
   {
     "type": "GET",
-    "url": "/issue/show",
+    "url": "/issue/show/:offset/:limit",
     "title": "显示已回复的问题",
     "group": "issue",
     "description": "<p>显示所有管理员已回复的问题</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>偏移量 默认0</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>显示的个数 默认5</p>"
+          }
+        ]
+      }
+    },
     "version": "0.0.3",
     "filename": "routes/api.php",
     "groupTitle": "issue",
-    "name": "GetIssueShow",
+    "name": "GetIssueShowOffsetLimit",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/issue/show"
+        "url": "http://api.consult.coder4me.cn/issue/show/:offset/:limit"
       }
     ]
   },
