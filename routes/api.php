@@ -54,8 +54,8 @@ $api->post('issue/store', "IssueController@store");
  * @api {GET} /issue/show/:offset/:limit 显示已回复的问题
  * @apiGroup issue
  * @apiDescription 显示所有管理员已回复的问题
- * @apiParam {Number} offset 偏移量 默认0
- * @apiParam {Number} limit 显示的个数 默认5
+ * @apiParam {Number} offset=0 偏移量
+ * @apiParam {Number} limit=5 显示的个数
  * @apiVersion 0.0.3
  */
 $api->get('issue/show/{offset?}/{limit?}',"IssueController@show");
