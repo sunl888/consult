@@ -7,3 +7,4 @@ Homestead.yaml
 .env
 composer.lock
 /routes/apidoc.json
+/doc
