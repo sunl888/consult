@@ -13,19 +13,19 @@ class HomeController extends Controller
 
     public function index()
     {
-    //        $echoStr = $_GET["echostr"];
-    //        $signature = $_GET["signature"];
-    //        $timestamp = $_GET["timestamp"];
-    //        $nonce = $_GET["nonce"];
-    //        $token = "wqer";
-    //        $tmpArr = array($token, $timestamp, $nonce);
-    //        sort($tmpArr, SORT_STRING);
-    //        $tmpStr = implode($tmpArr);
-    //        $tmpStr = sha1($tmpStr);
-    //        if ($tmpStr == $signature) {
-    //            echo $echoStr;
-    //            exit;
-    //        }
+    /*        $echoStr = $_GET["echostr"];
+            $signature = $_GET["signature"];
+            $timestamp = $_GET["timestamp"];
+            $nonce = $_GET["nonce"];
+            $token = "wqer";
+            $tmpArr = array($token, $timestamp, $nonce);
+            sort($tmpArr, SORT_STRING);
+            $tmpStr = implode($tmpArr);
+            $tmpStr = sha1($tmpStr);
+            if ($tmpStr == $signature) {
+                echo $echoStr;
+                exit;
+            }*/
         return redirect($this->get_authorize_url('http://www.baidu.com'));
     }
     /**

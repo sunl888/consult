@@ -454,6 +454,13 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
+            "field": "email",
+            "description": "<p>email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
             "field": "phone",
             "description": "<p>联系方式</p>"
           },
@@ -495,7 +502,7 @@ define({ "api": [
         ]
       }
     },
-    "version": "1.0.1",
+    "version": "1.1.0",
     "error": {
       "examples": [
         {

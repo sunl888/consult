@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Region;
 use App\Models\Wx_users;
+use Dingo\Api\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,7 @@ class Wx_userController extends Controller
             $data = [
                 'name'       =>$request->get('name'),
                 'phone'      =>$request->get('phone'),
+                'email'      =>$request->get('email'),
                 'province'   =>$request->get('province'),
                 'city'       =>$request->get('city'),
                 'area'       =>$request->get('area'),
@@ -54,4 +56,11 @@ class Wx_userController extends Controller
     public function linkage($parent_id = 0){
         return Region::where(['parent_id'=>$parent_id])->get();
     }
+
+    /**
+     * 文理科
+     * @return array
+     */
+    /*public function science(){
+    }*/
 }
