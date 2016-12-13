@@ -359,14 +359,16 @@
             "type": "Number",
             "optional": false,
             "field": "offset",
-            "description": "<p>偏移量 默认0</p>"
+            "defaultValue": "0",
+            "description": "<p>偏移量</p>"
           },
           {
             "group": "Parameter",
             "type": "Number",
             "optional": false,
             "field": "limit",
-            "description": "<p>显示的个数 默认5</p>"
+            "defaultValue": "5",
+            "description": "<p>显示的个数</p>"
           }
         ]
       }
