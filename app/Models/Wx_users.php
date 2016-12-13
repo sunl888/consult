@@ -12,6 +12,7 @@ class Wx_users extends Model
      */
     protected $fillable = [
         'name',
+        'email',
         'phone',
         'province',
         'city',

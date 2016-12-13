@@ -31,6 +31,7 @@ class Wx_userController extends Controller
             $data = [
                 'name'       =>$request->get('name'),
                 'phone'      =>$request->get('phone'),
+                'email'      =>$request->get('email'),
                 'province'   =>$request->get('province'),
                 'city'       =>$request->get('city'),
                 'area'       =>$request->get('area'),

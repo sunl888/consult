@@ -476,7 +476,7 @@
             "type": "String",
             "optional": false,
             "field": "area",
-            "description": "<p>地区</p>"
+            "description": "<p>地区 #apiParam {String} science 文科or理科</p>"
           },
           {
             "group": "Parameter",
