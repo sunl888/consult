@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Issue extends Model
 {
+    protected $table='issues';
     //软删除trait
     use SoftDeletes;
 
