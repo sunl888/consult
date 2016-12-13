@@ -455,7 +455,7 @@
             "type": "String",
             "optional": false,
             "field": "email",
-            "description": "<p>email</p>"
+            "description": "<p>用户的email</p>"
           },
           {
             "group": "Parameter",
