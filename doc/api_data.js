@@ -31,7 +31,7 @@ define({ "api": [
     "name": "GetAdminIssueDelete",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/issue/delete"
+        "url": "http://api.consult.coder4me.cn/admin/issue/delete"
       }
     ]
   },
@@ -60,7 +60,7 @@ define({ "api": [
     "name": "GetAdminIssueList_only_trashed",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/issue/list_only_trashed"
+        "url": "http://api.consult.coder4me.cn/admin/issue/list_only_trashed"
       }
     ]
   },
@@ -96,7 +96,7 @@ define({ "api": [
     "name": "GetAdminIssueRestore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/issue/restore"
+        "url": "http://api.consult.coder4me.cn/admin/issue/restore"
       }
     ]
   },
@@ -132,7 +132,7 @@ define({ "api": [
     "name": "GetAdminIssueSoftdelete",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/issue/softdelete"
+        "url": "http://api.consult.coder4me.cn/admin/issue/softdelete"
       }
     ]
   },
@@ -161,7 +161,7 @@ define({ "api": [
     "name": "GetAdminLists",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/lists"
+        "url": "http://api.consult.coder4me.cn/admin/lists"
       }
     ]
   },
@@ -190,7 +190,7 @@ define({ "api": [
     "name": "GetAdminMe",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/me"
+        "url": "http://api.consult.coder4me.cn/admin/me"
       }
     ]
   },
@@ -219,7 +219,7 @@ define({ "api": [
     "name": "GetAdminRefresh_token",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/refresh_token"
+        "url": "http://api.consult.coder4me.cn/admin/refresh_token"
       }
     ]
   },
@@ -262,7 +262,7 @@ define({ "api": [
     "name": "PostAdminCommentStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/comment/store"
+        "url": "http://api.consult.coder4me.cn/admin/comment/store"
       }
     ]
   },
@@ -305,7 +305,7 @@ define({ "api": [
     "name": "PostAdminCreate",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/create"
+        "url": "http://api.consult.coder4me.cn/admin/create"
       }
     ]
   },
@@ -341,7 +341,7 @@ define({ "api": [
     "name": "PostAdminLogin",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/admin/login"
+        "url": "http://api.consult.coder4me.cn/admin/login"
       }
     ]
   },
@@ -357,7 +357,7 @@ define({ "api": [
     "name": "GetIssueShow",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/issue/show"
+        "url": "http://api.consult.coder4me.cn/issue/show"
       }
     ]
   },
@@ -390,7 +390,7 @@ define({ "api": [
             "type": "Number",
             "optional": false,
             "field": "wx_user_id",
-            "description": "<p>用户id(如果匿名提问只需将本字段传0即可)</p>"
+            "description": "<p>用户id(存储在localStore中,没有则跳转到填写信息页面,如果用户选择跳过则表示匿名提问)</p>"
           }
         ]
       }
@@ -400,7 +400,7 @@ define({ "api": [
     "name": "PostIssueStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/issue/store"
+        "url": "http://api.consult.coder4me.cn/issue/store"
       }
     ]
   },
@@ -430,36 +430,7 @@ define({ "api": [
     "name": "GetWx_userLinkageParent_id",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/wx_user/linkage/:parent_id"
-      }
-    ]
-  },
-  {
-    "type": "GET",
-    "url": "/wx_user/me/:openid",
-    "title": "查询用户信息",
-    "group": "user",
-    "description": "<p>通过微信的openid尝试请求用户信息以及它提过的问题</p>",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "openid",
-            "description": "<p>用户的标志,对当前公众号唯一,用来确定登陆者的身份</p>"
-          }
-        ]
-      }
-    },
-    "version": "0.0.1",
-    "filename": "routes/api.php",
-    "groupTitle": "user",
-    "name": "GetWx_userMeOpenid",
-    "sampleRequest": [
-      {
-        "url": "http://api.consult.dev/wx_user/me/:openid"
+        "url": "http://api.consult.coder4me.cn/wx_user/linkage/:parent_id"
       }
     ]
   },
@@ -468,38 +439,10 @@ define({ "api": [
     "url": "/wx_user/store",
     "title": "保存用户信息",
     "group": "user",
-    "description": "<p>如果数据库中没有用户信息则让用户填写相关信息并保存到数据库中.</p>",
+    "description": "<p>如localStore中没有用户信息则让用户填写相关信息并保存到数据库中.</p>",
     "parameter": {
       "fields": {
         "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "openid",
-            "description": "<p>用户的标志,对当前公众号唯一,用来确定登陆者的身份</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "nickname",
-            "description": "<p>用户昵称</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "sex",
-            "description": "<p>年龄</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "headimgurl",
-            "description": "<p>用户图像链接</p>"
-          },
           {
             "group": "Parameter",
             "type": "String",
@@ -552,7 +495,7 @@ define({ "api": [
         ]
       }
     },
-    "version": "0.0.1",
+    "version": "1.0.1",
     "error": {
       "examples": [
         {
@@ -567,7 +510,7 @@ define({ "api": [
     "name": "PostWx_userStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.dev/wx_user/store"
+        "url": "http://api.consult.coder4me.cn/wx_user/store"
       }
     ]
   }
