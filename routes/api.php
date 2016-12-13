@@ -24,7 +24,7 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
  * @apiGroup user
  * @apiDescription 如localStore中没有用户信息则让用户填写相关信息并保存到数据库中.
  * @apiParam {String} name 用户姓名
- * @apiParam {String} email email
+ * @apiParam {String} email 用户的email
  * @apiParam {String} phone 联系方式
  * @apiParam {String} province 省份
  * @apiParam {String} city 城市
