@@ -6,6 +6,7 @@ use App\Models\Issue;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
 class IssueController extends Controller
@@ -23,13 +24,16 @@ class IssueController extends Controller
      * 显示所有的已回答的问题
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function show(){
+    public function show($offset=0,$limit=5){
         $issue = Issue::with('Wx_users')
             ->with('Comment')
             ->where('comment_id','<>',0)
             ->where(['deleted_at'=>null])
             ->orderBy('created_at', 'desc')
-            ->get()->toArray();
+            ->skip($offset)
+            ->take($limit)
+            ->get()
+            ->toArray();
         //显示回复者信息
         for ($i=0;$i<count($issue);$i++) {
             if($issue[$i]['comment'] !=null)
@@ -54,7 +58,7 @@ class IssueController extends Controller
                 'title' =>$request->get('title'),
                 'description' =>$request->get('description'),
                 //wx_user_id当用户匿名提问时传0进来,否则传当前id
-                'wx_user_id' =>$request->get('wx_user_id'),
+                'wx_user_id' =>empty($request->get('wx_user_id'))?0:$request->get('wx_user_id'),
             ];
             $issue = Issue::create($data);
             if(!$issue){

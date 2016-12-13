@@ -14,9 +14,9 @@ class RegionsTableSeeder extends Seeder
     {
         
 
-        \DB::table('Regions')->delete();
+        \DB::table('regions')->delete();
         
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 1,
@@ -4018,7 +4018,7 @@ class RegionsTableSeeder extends Seeder
                 'level' => 3,
             ),
         ));
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 501,
@@ -8020,7 +8020,7 @@ class RegionsTableSeeder extends Seeder
                 'level' => 3,
             ),
         ));
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 1001,
@@ -12022,7 +12022,7 @@ class RegionsTableSeeder extends Seeder
                 'level' => 3,
             ),
         ));
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 1501,
@@ -16024,7 +16024,7 @@ class RegionsTableSeeder extends Seeder
                 'level' => 3,
             ),
         ));
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 2001,
@@ -20026,7 +20026,7 @@ class RegionsTableSeeder extends Seeder
                 'level' => 3,
             ),
         ));
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 2501,
@@ -24028,7 +24028,7 @@ class RegionsTableSeeder extends Seeder
                 'level' => 3,
             ),
         ));
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 3001,
@@ -28030,7 +28030,7 @@ class RegionsTableSeeder extends Seeder
                 'level' => 3,
             ),
         ));
-        \DB::table('Regions')->insert(array (
+        \DB::table('regions')->insert(array (
             0 => 
             array (
                 'id' => 3501,

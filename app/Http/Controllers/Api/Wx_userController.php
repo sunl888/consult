@@ -4,25 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Region;
 use App\Models\Wx_users;
+use Dingo\Api\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Mockery\CountValidator\Exception;
 
 class Wx_userController extends Controller
 {
     protected $rule = [
-        'openid' =>'required|unique:wx_users,openid',
+        //'openid' =>'required|unique:wx_users,openid',
+        'name' =>'required',
+        'email' =>'email',
+        'phone'=>['required','regex:/^1[34578][0-9]{9}$/'],
+
+        //'email' =>['required_with:email','email']//当email有值的情况下验证其是否合法
     ];
-    /**
-     * @param $openid 通过openid尝试查询用户信息以及他提问的所有问题
-     * @return mixed 返回空值表示数据库中没有该用户信息
-     */
-    public function me($openid=null){
-        $wx_user = Wx_users::with('Issue')->where(['openid'=>$openid])->first();
-        empty($wx_user) && $wx_user=[];
-        return $wx_user;
-    }
 
     /**
      * 添加用户信息.
@@ -37,13 +33,9 @@ class Wx_userController extends Controller
                 throw new \Exception('数据验证失败.');
             }
             $data = [
-                'openid'     =>$request->get('openid'),
-                'nickname'   =>$request->get('nickname'),
-                'sex'        =>$request->get('sex'),
-                'headimgurl' =>$request->get('headimgurl'),
-                //'is_init'    =>0,
                 'name'       =>$request->get('name'),
                 'phone'      =>$request->get('phone'),
+                'email'      =>$request->get('email'),
                 'province'   =>$request->get('province'),
                 'city'       =>$request->get('city'),
                 'area'       =>$request->get('area'),
@@ -68,4 +60,11 @@ class Wx_userController extends Controller
     public function linkage($parent_id = 0){
         return Region::where(['parent_id'=>$parent_id])->get();
     }
+
+    /**
+     * 文理科
+     * @return array
+     */
+    /*public function science(){
+    }*/
 }

@@ -8,17 +8,9 @@ use App\Http\Controllers\Api;
 |--------------------------------------------------------------------------
 |
 | 生成文档命令:  apidoc -i routes/ -o doc/
-|  aa
+|
 */
 
-/**
- * @api {GET} /wx_user/me/:openid 查询用户信息
- * @apiGroup user
- * @apiDescription 通过微信的openid尝试请求用户信息以及它提过的问题
- * @apiParam {String} openid 用户的标志,对当前公众号唯一,用来确定登陆者的身份
- * @apiVersion 0.0.1
- */
-$api->get('wx_user/me/{openid}' , "Wx_userController@me");
 /**
  * @api {GET} /wx_user/linkage/:parent_id 省市三级联动
  * @apiGroup user
@@ -30,19 +22,16 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
 /**
  * @api {POST} /wx_user/store 保存用户信息
  * @apiGroup user
- * @apiDescription 如果数据库中没有用户信息则让用户填写相关信息并保存到数据库中.
- * @apiParam {String} openid 用户的标志,对当前公众号唯一,用来确定登陆者的身份
- * @apiParam {String} nickname 用户昵称
- * @apiParam {String} sex 年龄
- * @apiParam {String} headimgurl 用户图像链接
+ * @apiDescription 如localStore中没有用户信息则让用户填写相关信息并保存到数据库中.
  * @apiParam {String} name 用户姓名
+ * @apiParam {String} email 用户的email
  * @apiParam {String} phone 联系方式
  * @apiParam {String} province 省份
  * @apiParam {String} city 城市
  * @apiParam {String} area 地区
  * @apiParam {Number} course 成绩
  * @apiParam {String} old_school 所在学校
- * @apiVersion 0.0.1
+ * @apiVersion 1.1.0
  * @apiErrorExample {json} Error-Response:
  *  {
  *      "message": "数据验证失败.",
@@ -58,16 +47,19 @@ $api->post('wx_user/store', "Wx_userController@store");
  * @apiVersion 0.0.1
  * @apiParam {String} title 标题
  * @apiParam {String} description 问题的详细描述
- * @apiParam {Number} wx_user_id 用户id(如果匿名提问只需将本字段传0即可)
+ * @apiParam {Number} wx_user_id 用户id(存储在localStore中,没有则跳转到填写信息页面,如果用户选择跳过则表示匿名提问)
  */
 $api->post('issue/store', "IssueController@store");
 /**
- * @api {GET} /issue/show 显示已回复的问题
+ * @api {GET} /issue/show/:offset/:limit 显示已回复的问题
  * @apiGroup issue
  * @apiDescription 显示所有管理员已回复的问题
+ * @apiParam {Number} offset=0 偏移量
+ * @apiParam {Number} limit=5 显示的个数
  * @apiVersion 0.0.3
  */
-$api->get('issue/show',"IssueController@show");
+$api->get('issue/show/{offset?}/{limit?}',"IssueController@show");
+
 
 ////////////////////Admin////////////////////////////
 /**

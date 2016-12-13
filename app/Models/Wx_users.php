@@ -11,11 +11,8 @@ class Wx_users extends Model
      * @var array
      */
     protected $fillable = [
-        'openid',
-        'nickname',
-        'sex',
-        'headimgurl',
         'name',
+        'email',
         'phone',
         'province',
         'city',

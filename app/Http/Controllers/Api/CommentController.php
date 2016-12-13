@@ -16,7 +16,7 @@ class CommentController extends Controller
     protected $user = null;
     protected $rule = [
         'answer' =>'required|max:255',
-        'issue_id' =>'required|exists:Issues,id|unique:comments' //issue_id必须已经存在于一个数据库的某个表中
+        'issue_id' =>'required|exists:issues,id|unique:comments' //issue_id必须已经存在于一个数据库的某个表中
     ];
 
     public function __construct()

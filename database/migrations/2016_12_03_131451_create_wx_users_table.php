@@ -15,14 +15,8 @@ class CreateWxUsersTable extends Migration
     {
         Schema::create('wx_users' , function (Blueprint $table){
             $table->increments('id');
-            /**从微信中获取**/
-            $table->string('openid')->comment('普通用户的标识，对当前公众号唯一');
-            $table->string('nickname')->comment('用户昵称');
-            $table->string('sex')->comment('用户性别');
-            $table->string('headimgurl')->comment('用户头像url');
-            //$table->integer('is_init')->default(1)->comment('是否第一次登录');
-            /****/
             $table->string('name')->comment('姓名')->nullable();
+            $table->string('email')->comment('email')->nullable();
             $table->string('phone')->comment('手机号码')->nullable();
             $table->string('province')->comment('所在省份')->nullable();
             $table->string('city')->comment('所在城市')->nullable();
@@ -40,6 +34,6 @@ class CreateWxUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('wx_users');
     }
 }
