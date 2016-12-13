@@ -454,6 +454,13 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
+            "field": "email",
+            "description": "<p>用户的email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
             "field": "phone",
             "description": "<p>联系方式</p>"
           },
@@ -476,7 +483,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "area",
-            "description": "<p>地区 #apiParam {String} science 文科or理科</p>"
+            "description": "<p>地区</p>"
           },
           {
             "group": "Parameter",
@@ -495,7 +502,7 @@ define({ "api": [
         ]
       }
     },
-    "version": "1.0.1",
+    "version": "1.1.0",
     "error": {
       "examples": [
         {
