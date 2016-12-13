@@ -24,14 +24,14 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
  * @apiGroup user
  * @apiDescription 如localStore中没有用户信息则让用户填写相关信息并保存到数据库中.
  * @apiParam {String} name 用户姓名
+ * @apiParam {String} email email
  * @apiParam {String} phone 联系方式
  * @apiParam {String} province 省份
  * @apiParam {String} city 城市
  * @apiParam {String} area 地区
- * #apiParam {String} science 文科or理科
  * @apiParam {Number} course 成绩
  * @apiParam {String} old_school 所在学校
- * @apiVersion 1.0.1
+ * @apiVersion 1.1.0
  * @apiErrorExample {json} Error-Response:
  *  {
  *      "message": "数据验证失败.",
