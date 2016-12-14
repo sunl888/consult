@@ -82,7 +82,6 @@ class CommentController extends Controller
      * @return mixed
      */
     public function softdelete($issue_id=0){
-
         return Issue::where(['id'=>$issue_id])->delete();
     }
 

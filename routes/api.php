@@ -99,7 +99,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/me', "AuthenticateController@getAuthenticatedUser");
     /**
-     * @api {GET} /admin/issue/:offset/:limit 获取所有没有被软删除的问题
+     * @api {GET} /admin/issue/lists/offset=:offset/limit=:limit 获取所有没有被软删除的问题
      * @apiGroup Admin
      * @apiDescription 获取所有的问题以及问题的详细信息
      * @apiVersion 0.0.1
@@ -107,7 +107,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      * @apiParam {Number} limit=5 每页显示的个数
      * @apiParam {String} token token
      */
-    $api->get('admin/issue/{offset?}/{limit?}', "CommentController@lists");
+    $api->get('admin/issue/lists/offset={offset}/limit={limit}', "CommentController@lists");
     /**
      * @api {GET} /admin/issues/count 获取所有没有被软删除的问题的总数
      * @apiGroup Admin
