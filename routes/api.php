@@ -99,7 +99,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/me', "AuthenticateController@getAuthenticatedUser");
     /**
-     * @api {GET} /admin/issue/lists/offset=:offset/limit=:limit 获取所有没有被软删除的问题
+     * @api {GET} /admin/issue/lists 获取所有没有被软删除的问题
      * @apiGroup Admin
      * @apiDescription 获取所有的问题以及问题的详细信息
      * @apiVersion 0.0.1
@@ -107,7 +107,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      * @apiParam {Number} limit=5 每页显示的个数
      * @apiParam {String} token token
      */
-    $api->get('admin/issue/lists/offset={offset}/limit={limit}', "CommentController@lists");
+    $api->get('admin/issue/lists', "CommentController@lists");
     /**
      * @api {GET} /admin/issues/count 获取所有没有被软删除的问题的总数
      * @apiGroup Admin
@@ -127,25 +127,25 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->post('admin/comment/store', "CommentController@store");
     /**
-     * @api {GET} /admin/issue/softdelete/:issue_id 对某个问题软删除
+     * @api {GET} /admin/issue/softdelete 对某个问题软删除
      * @apiGroup Admin
      * @apiDescription 对某个问题软删除
      * @apiVersion 0.0.1
      * @apiParam {String} token token
      * @apiParam {String} issue_id 问题对应的id
      */
-    $api->get('admin/issue/softdelete/{issue_id}', "CommentController@softdelete");
+    $api->get('admin/issue/softdelete', "CommentController@softdelete");
     /**
-     * @api {GET} /admin/issue/delete/:issue_id 对某个问题强制删除
+     * @api {GET} /admin/issue/delete 对某个问题强制删除
      * @apiGroup Admin
      * @apiDescription 对某个问题强制删除
      * @apiVersion 0.0.1
      * @apiParam {String} token token
      * @apiParam {String} issue_id 问题对应的id
      */
-    $api->get('admin/issue/delete/{issue_id}', "CommentController@delete");
+    $api->get('admin/issue/delete', "CommentController@delete");
     /**
-     * @api {GET} /admin/issue/list_softdel/:offset/:limit 分页显示被软删除的问题
+     * @api {GET} /admin/issue/list_softdel 分页显示被软删除的问题
      * @apiGroup Admin
      * @apiDescription 分页显示被软删除的问题
      * @apiVersion 0.0.1
@@ -153,7 +153,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      * @apiParam {Number} limit=5 每页显示的个数
      * @apiParam {String} token token
      */
-    $api->get('admin/issue/list_softdel/{offset?}/{limit?}', "CommentController@only_trashed");
+    $api->get('admin/issue/list_softdel', "CommentController@only_trashed");
     /**
      * @api {GET} /admin/soft_issues/softdelete_count 回收站中问题的总数
      * @apiGroup Admin
@@ -163,13 +163,13 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/soft_issues/softdelete_count', "CommentController@softDeleteCount");
     /**
-     * @api {GET} /admin/issue/restore/:issue_id 恢复被软删除的问题
+     * @api {GET} /admin/issue/restore 恢复被软删除的问题
      * @apiGroup Admin
      * @apiDescription 恢复被软删除的问题
      * @apiVersion 0.0.1
      * @apiParam {String} token token
      * @apiParam {String} issue_id 问题的id
      */
-    $api->get('admin/issue/restore/{issue_id}', "CommentController@restore");
+    $api->get('admin/issue/restore', "CommentController@restore");
 
 });

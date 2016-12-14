@@ -1,7 +1,7 @@
 [
   {
     "type": "GET",
-    "url": "/admin/issue/delete/:issue_id",
+    "url": "/admin/issue/delete",
     "title": "对某个问题强制删除",
     "group": "Admin",
     "description": "<p>对某个问题强制删除</p>",
@@ -28,16 +28,20 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueDeleteIssue_id",
+    "name": "GetAdminIssueDelete",
     "sampleRequest": [
       {
+<<<<<<< HEAD
         "url": "http://api.consult.coder4me.cn/admin/issue/delete/:issue_id"
+=======
+        "url": "http://api.consult.dev/admin/issue/delete"
+>>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/issue/list_softdel/:offset/:limit",
+    "url": "/admin/issue/list_softdel",
     "title": "分页显示被软删除的问题",
     "group": "Admin",
     "description": "<p>分页显示被软删除的问题</p>",
@@ -73,16 +77,20 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueList_softdelOffsetLimit",
+    "name": "GetAdminIssueList_softdel",
     "sampleRequest": [
       {
+<<<<<<< HEAD
         "url": "http://api.consult.coder4me.cn/admin/issue/list_softdel/:offset/:limit"
+=======
+        "url": "http://api.consult.dev/admin/issue/list_softdel"
+>>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/issue/lists/offset=:offset/limit=:limit",
+    "url": "/admin/issue/lists",
     "title": "获取所有没有被软删除的问题",
     "group": "Admin",
     "description": "<p>获取所有的问题以及问题的详细信息</p>",
@@ -118,16 +126,20 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueListsOffsetOffsetLimitLimit",
+    "name": "GetAdminIssueLists",
     "sampleRequest": [
       {
+<<<<<<< HEAD
         "url": "http://api.consult.coder4me.cn/admin/issue/lists/offset=:offset/limit=:limit"
+=======
+        "url": "http://api.consult.dev/admin/issue/lists"
+>>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/issue/restore/:issue_id",
+    "url": "/admin/issue/restore",
     "title": "恢复被软删除的问题",
     "group": "Admin",
     "description": "<p>恢复被软删除的问题</p>",
@@ -154,16 +166,20 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueRestoreIssue_id",
+    "name": "GetAdminIssueRestore",
     "sampleRequest": [
       {
+<<<<<<< HEAD
         "url": "http://api.consult.coder4me.cn/admin/issue/restore/:issue_id"
+=======
+        "url": "http://api.consult.dev/admin/issue/restore"
+>>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/issue/softdelete/:issue_id",
+    "url": "/admin/issue/softdelete",
     "title": "对某个问题软删除",
     "group": "Admin",
     "description": "<p>对某个问题软删除</p>",
@@ -190,10 +206,14 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueSoftdeleteIssue_id",
+    "name": "GetAdminIssueSoftdelete",
     "sampleRequest": [
       {
+<<<<<<< HEAD
         "url": "http://api.consult.coder4me.cn/admin/issue/softdelete/:issue_id"
+=======
+        "url": "http://api.consult.dev/admin/issue/softdelete"
+>>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },

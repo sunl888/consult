@@ -28,7 +28,10 @@ class CommentController extends Controller
      * 显示所有的问题
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function lists($offset=0,$limit=5){
+    public function lists(Input $input){
+        $offset = empty($input->get('offset')) ?0:$input->get('offset');
+        $limit = empty($input->get('limit')) ?5:$input->get('limit');
+
         $issue = Issue::with('Wx_users')
             ->with('Comment')
             ->where(['deleted_at'=>null])
@@ -81,7 +84,8 @@ class CommentController extends Controller
      * 软删除某个评论
      * @return mixed
      */
-    public function softdelete($issue_id=0){
+    public function softdelete(){
+        $issue_id = empty(Input::get('issue_id')) ?0:Input::get('issue_id');
         return Issue::where(['id'=>$issue_id])->delete();
     }
 
@@ -89,14 +93,18 @@ class CommentController extends Controller
      * 物理删除某个评论
      * @return bool|mixed|null
      */
-    public function delete($issue_id=0){
+    public function delete(){
+        $issue_id = empty(Input::get('issue_id')) ?0:Input::get('issue_id');
         return Issue::where(['id'=>$issue_id])->forceDelete();
     }
 
     /**
      * 分页显示被软删除的问题
      */
-    public function only_trashed($offset=0,$limit=5){
+    public function only_trashed(Input $input){
+        $offset = empty($input->get('offset')) ?0:$input->get('offset');
+        $limit = empty($input->get('limit')) ?5:$input->get('limit');
+
         $issue = Issue::with('Wx_users')
             ->with('Comment')
             ->orderBy('created_at', 'desc')
@@ -124,7 +132,8 @@ class CommentController extends Controller
      * 恢复被软删除的问题
      * @return mixed
      */
-    public function restore($issue_id=0){
+    public function restore(){
+        $issue_id = empty(Input::get('issue_id')) ?0:Input::get('issue_id');
         return Issue::where(['id'=>$issue_id])->restore();
     }
 }
