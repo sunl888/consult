@@ -46,6 +46,13 @@ class CommentController extends Controller
     }
 
     /**
+     * 获取所有没有被软删除的文章的个数
+     * @return mixed
+     */
+    public function count(){
+        return Issue::where(['deleted_at'=>null])->count();
+    }
+    /**
      * 对某个问题回复
      * @param Request $request
      * @param null $issue_id
@@ -74,20 +81,21 @@ class CommentController extends Controller
      * 软删除某个评论
      * @return mixed
      */
-    public function softdelete(){
-        return Issue::where(['id'=>Input::get('issue_id')])->delete();
+    public function softdelete($issue_id=0){
+
+        return Issue::where(['id'=>$issue_id])->delete();
     }
 
     /**
      * 物理删除某个评论
      * @return bool|mixed|null
      */
-    public function delete(){
-        return Issue::where(['id'=>Input::get('issue_id')])->forceDelete();
+    public function delete($issue_id=0){
+        return Issue::where(['id'=>$issue_id])->forceDelete();
     }
 
     /**
-     * 只显示被软删除的提问
+     * 分页显示被软删除的问题
      */
     public function only_trashed($offset=0,$limit=5){
         $issue = Issue::with('Wx_users')
@@ -103,6 +111,14 @@ class CommentController extends Controller
                 $issue[$i]['comment']['anthor'] = User::where(['id'=>$issue[$i]['comment']['uid'] ])->first();
         }
         return $issue;
+    }
+
+    /**
+     * 被软删除的问题总数
+     * @return mixed
+     */
+    public function softDeleteCount(){
+        return Issue::onlyTrashed()->count();
     }
 
     /**

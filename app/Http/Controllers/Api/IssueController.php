@@ -61,7 +61,6 @@ class IssueController extends Controller
                 //wx_user_id当用户匿名提问时传0进来,否则传当前id
                 'wx_user_id' =>empty($request->get('wx_user_id'))?0:$request->get('wx_user_id'),
             ];
-            dd($data);
             $issue = Issue::create($data);
             if(!$issue){
                 throw new \Exception('问题添加失败.');
