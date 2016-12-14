@@ -54,12 +54,14 @@ class IssueController extends Controller
             if($validator->fails()){
                 throw new \Exception('数据验证失败咯.');
             }
+
             $data = [
                 'title' =>$request->get('title'),
                 'description' =>$request->get('description'),
                 //wx_user_id当用户匿名提问时传0进来,否则传当前id
                 'wx_user_id' =>empty($request->get('wx_user_id'))?0:$request->get('wx_user_id'),
             ];
+            dd($data);
             $issue = Issue::create($data);
             if(!$issue){
                 throw new \Exception('问题添加失败.');

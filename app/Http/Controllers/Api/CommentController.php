@@ -28,12 +28,15 @@ class CommentController extends Controller
      * 显示所有的问题
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function lists(){
+    public function lists($offset=0,$limit=5){
         $issue = Issue::with('Wx_users')
             ->with('Comment')
             ->where(['deleted_at'=>null])
             ->orderBy('created_at', 'desc')
-            ->get()->toArray();
+            ->skip($offset)
+            ->take($limit)
+            ->get()
+            ->toArray();
         //显示回复者信息
         for ($i=0;$i<count($issue);$i++) {
             if($issue[$i]['comment'] !=null)
@@ -86,11 +89,13 @@ class CommentController extends Controller
     /**
      * 只显示被软删除的提问
      */
-    public function only_trashed(){
+    public function only_trashed($offset=0,$limit=5){
         $issue = Issue::with('Wx_users')
             ->with('Comment')
             ->orderBy('created_at', 'desc')
             ->onlyTrashed()
+            ->skip($offset)
+            ->take($limit)
             ->get()
             ->toArray();
         for ($i=0;$i<count($issue);$i++) {
@@ -104,7 +109,7 @@ class CommentController extends Controller
      * 恢复被软删除的问题
      * @return mixed
      */
-    public function restore(){
-        return Issue::where(['id'=>Input::get('issue_id')])->restore();
+    public function restore($issue_id=0){
+        return Issue::where(['id'=>$issue_id])->restore();
     }
 }

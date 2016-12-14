@@ -42,6 +42,7 @@ class Wx_userController extends Controller
                 'course'     =>$request->get('course'),
                 'old_school' =>$request->get('old_school'),
             ];
+            dd($data);
             $wx_user = Wx_users::create($data);
             if(!$wx_user){
                 throw new \Exception('数据插入失败.');

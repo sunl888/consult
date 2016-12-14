@@ -100,13 +100,15 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/me', "AuthenticateController@getAuthenticatedUser");
     /**
-     * @api {GET} /admin/lists 获取所有的问题
+     * @api {GET} /admin/lists/:offset/:limit 获取所有的问题
      * @apiGroup Admin
      * @apiDescription 获取所有的问题以及问题的详细信息
      * @apiVersion 0.0.1
+     * @apiParam {Number} offset=0 偏移量
+     * @apiParam {Number} limit=5 每页显示的个数
      * @apiParam {String} token token
      */
-    $api->get('admin/lists', "CommentController@lists");
+    $api->get('admin/lists/{offset?}/{limit?}', "CommentController@lists");
     /**
      * @api {POST} /admin/comment/store 回复某个问题
      * @apiGroup Admin
@@ -136,22 +138,24 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/issue/delete', "CommentController@delete");
     /**
-     * @api {GET} /admin/issue/list_only_trashed 只显示被软删除的问题
+     * @api {GET} /admin/issue/list_softdel/:offset/:limit 只显示被软删除的问题
      * @apiGroup Admin
      * @apiDescription 只显示被软删除的问题
      * @apiVersion 0.0.1
+     * @apiParam {Number} offset=0 偏移量
+     * @apiParam {Number} limit=5 每页显示的个数
      * @apiParam {String} token token
      */
-    $api->get('admin/issue/list_only_trashed', "CommentController@only_trashed");
+    $api->get('admin/issue/list_softdel/{offset?}/{limit?}', "CommentController@only_trashed");
 
     /**
-     * @api {GET} /admin/issue/restore 恢复被软删除的问题
+     * @api {GET} /admin/issue/restore{issue_id} 恢复被软删除的问题
      * @apiGroup Admin
      * @apiDescription 恢复被软删除的问题
      * @apiVersion 0.0.1
      * @apiParam {String} token token
      * @apiParam {String} issue_id 问题的id
      */
-    $api->get('admin/issue/restore', "CommentController@restore");
+    $api->get('admin/issue/restore/{issue_id}', "CommentController@restore");
 
 });
