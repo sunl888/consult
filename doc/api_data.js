@@ -82,7 +82,7 @@ define({ "api": [
   },
   {
     "type": "GET",
-    "url": "/admin/issue/:offset/:limit",
+    "url": "/admin/issue/lists/offset=:offset/limit=:limit",
     "title": "获取所有没有被软删除的问题",
     "group": "Admin",
     "description": "<p>获取所有的问题以及问题的详细信息</p>",
@@ -118,10 +118,10 @@ define({ "api": [
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueOffsetLimit",
+    "name": "GetAdminIssueListsOffsetOffsetLimitLimit",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/issue/:offset/:limit"
+        "url": "http://api.consult.coder4me.cn/admin/issue/lists/offset=:offset/limit=:limit"
       }
     ]
   },
