@@ -1,8 +1,10 @@
 /node_modules
 /public/storage
 /vendor
+/routes/apidoc.json
 /.idea
 Homestead.json
 Homestead.yaml
 .env
 composer.lock
+/routes/apidoc.json
