@@ -49,8 +49,8 @@ class CommentController extends Controller
      * 获取所有没有被软删除的文章的个数
      * @return mixed
      */
-    public function count(){
-        return Issue::where(['deleted_at'=>null])->get()->count();
+    public function lists_count(){
+        return Issue::where(['deleted_at'=>null])->count();
     }
     /**
      * 对某个问题回复
