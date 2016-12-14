@@ -32,6 +32,7 @@ class Wx_userController extends Controller
             if($validator->fails()){
                 throw new \Exception('数据验证失败.');
             }
+            echo 'OK';
             dd($request->all());
             $data = [
                 'name'       =>$request->get('name'),
