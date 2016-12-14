@@ -54,6 +54,7 @@ class IssueController extends Controller
             if($validator->fails()){
                 throw new \Exception('数据验证失败咯.');
             }
+
             $data = [
                 'title' =>$request->get('title'),
                 'description' =>$request->get('description'),

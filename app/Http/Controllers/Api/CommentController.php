@@ -28,12 +28,15 @@ class CommentController extends Controller
      * 显示所有的问题
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function lists(){
+    public function lists($offset=0,$limit=5){
         $issue = Issue::with('Wx_users')
             ->with('Comment')
             ->where(['deleted_at'=>null])
             ->orderBy('created_at', 'desc')
-            ->get()->toArray();
+            ->skip($offset)
+            ->take($limit)
+            ->get()
+            ->toArray();
         //显示回复者信息
         for ($i=0;$i<count($issue);$i++) {
             if($issue[$i]['comment'] !=null)
@@ -42,6 +45,13 @@ class CommentController extends Controller
         return $issue;
     }
 
+    /**
+     * 获取所有没有被软删除的文章的个数
+     * @return mixed
+     */
+    public function count(){
+        return Issue::where(['deleted_at'=>null])->count();
+    }
     /**
      * 对某个问题回复
      * @param Request $request
@@ -71,26 +81,29 @@ class CommentController extends Controller
      * 软删除某个评论
      * @return mixed
      */
-    public function softdelete(){
-        return Issue::where(['id'=>Input::get('issue_id')])->delete();
+    public function softdelete($issue_id=0){
+
+        return Issue::where(['id'=>$issue_id])->delete();
     }
 
     /**
      * 物理删除某个评论
      * @return bool|mixed|null
      */
-    public function delete(){
-        return Issue::where(['id'=>Input::get('issue_id')])->forceDelete();
+    public function delete($issue_id=0){
+        return Issue::where(['id'=>$issue_id])->forceDelete();
     }
 
     /**
-     * 只显示被软删除的提问
+     * 分页显示被软删除的问题
      */
-    public function only_trashed(){
+    public function only_trashed($offset=0,$limit=5){
         $issue = Issue::with('Wx_users')
             ->with('Comment')
             ->orderBy('created_at', 'desc')
             ->onlyTrashed()
+            ->skip($offset)
+            ->take($limit)
             ->get()
             ->toArray();
         for ($i=0;$i<count($issue);$i++) {
@@ -101,10 +114,18 @@ class CommentController extends Controller
     }
 
     /**
+     * 被软删除的问题总数
+     * @return mixed
+     */
+    public function softDeleteCount(){
+        return Issue::onlyTrashed()->count();
+    }
+
+    /**
      * 恢复被软删除的问题
      * @return mixed
      */
-    public function restore(){
-        return Issue::where(['id'=>Input::get('issue_id')])->restore();
+    public function restore($issue_id=0){
+        return Issue::where(['id'=>$issue_id])->restore();
     }
 }
