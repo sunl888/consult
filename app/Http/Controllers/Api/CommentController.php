@@ -50,7 +50,7 @@ class CommentController extends Controller
      * @return mixed
      */
     public function count(){
-        return Issue::where(['deleted_at'=>null])->count();
+        return Issue::where(['deleted_at'=>null])->get()->count();
     }
     /**
      * 对某个问题回复
@@ -118,7 +118,7 @@ class CommentController extends Controller
      * @return mixed
      */
     public function softDeleteCount(){
-        return Issue::onlyTrashed()->count();
+        return Issue::onlyTrashed()->get()->count();
     }
 
     /**
