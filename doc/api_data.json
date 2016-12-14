@@ -31,7 +31,11 @@
     "name": "GetAdminIssueDeleteIssue_id",
     "sampleRequest": [
       {
+<<<<<<< HEAD
         "url": "http://api.consult.coder4me.cn/admin/issue/delete/:issue_id"
+=======
+        "url": "http://api.consult.dev/admin/issue/delete/:issue_id"
+>>>>>>> 1c8c9f770f3a233114167a0b35b671bdfb9c5be4
       }
     ]
   },
@@ -63,6 +67,8 @@
           },
           {
             "group": "Parameter",
+<<<<<<< HEAD
+=======
             "type": "String",
             "optional": false,
             "field": "token",
@@ -76,7 +82,60 @@
     "name": "GetAdminIssueList_softdelOffsetLimit",
     "sampleRequest": [
       {
+        "url": "http://api.consult.dev/admin/issue/list_softdel/:offset/:limit"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/admin/issue/:offset/:limit",
+    "title": "获取所有没有被软删除的问题",
+    "group": "Admin",
+    "description": "<p>获取所有的问题以及问题的详细信息</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>偏移量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "defaultValue": "5",
+            "description": "<p>每页显示的个数</p>"
+          },
+          {
+            "group": "Parameter",
+>>>>>>> 1c8c9f770f3a233114167a0b35b671bdfb9c5be4
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+<<<<<<< HEAD
+    "name": "GetAdminIssueList_softdelOffsetLimit",
+    "sampleRequest": [
+      {
         "url": "http://api.consult.coder4me.cn/admin/issue/list_softdel/:offset/:limit"
+=======
+    "name": "GetAdminIssueOffsetLimit",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/issue/:offset/:limit"
+>>>>>>> 1c8c9f770f3a233114167a0b35b671bdfb9c5be4
       }
     ]
   },
@@ -112,7 +171,11 @@
     "name": "GetAdminIssueRestoreIssue_id",
     "sampleRequest": [
       {
+<<<<<<< HEAD
         "url": "http://api.consult.coder4me.cn/admin/issue/restore/:issue_id"
+=======
+        "url": "http://api.consult.dev/admin/issue/restore/:issue_id"
+>>>>>>> 1c8c9f770f3a233114167a0b35b671bdfb9c5be4
       }
     ]
   },
@@ -146,6 +209,7 @@
     "filename": "routes/api.php",
     "groupTitle": "Admin",
     "name": "GetAdminIssueSoftdeleteIssue_id",
+<<<<<<< HEAD
     "sampleRequest": [
       {
         "url": "http://api.consult.coder4me.cn/admin/issue/softdelete/:issue_id"
@@ -178,11 +242,17 @@
     "sampleRequest": [
       {
         "url": "http://api.consult.coder4me.cn/admin/issue/softdelete_count"
+=======
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/issue/softdelete/:issue_id"
+>>>>>>> 1c8c9f770f3a233114167a0b35b671bdfb9c5be4
       }
     ]
   },
   {
     "type": "GET",
+<<<<<<< HEAD
     "url": "/admin/lists/count",
     "title": "获取所有没有被软删除的问题的总数",
     "group": "Admin",
@@ -214,8 +284,12 @@
     "type": "GET",
     "url": "/admin/lists/:offset/:limit",
     "title": "获取所有没有被软删除的问题",
+=======
+    "url": "/admin/issues/count",
+    "title": "获取所有没有被软删除的问题的总数",
+>>>>>>> 1c8c9f770f3a233114167a0b35b671bdfb9c5be4
     "group": "Admin",
-    "description": "<p>获取所有的问题以及问题的详细信息</p>",
+    "description": "<p>获取所有没有被软删除的问题的总数</p>",
     "version": "0.0.1",
     "parameter": {
       "fields": {
@@ -248,10 +322,17 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
+<<<<<<< HEAD
     "name": "GetAdminListsOffsetLimit",
     "sampleRequest": [
       {
         "url": "http://api.consult.coder4me.cn/admin/lists/:offset/:limit"
+=======
+    "name": "GetAdminIssuesCount",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/issues/count"
+>>>>>>> 1c8c9f770f3a233114167a0b35b671bdfb9c5be4
       }
     ]
   },
@@ -280,7 +361,7 @@
     "name": "GetAdminMe",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/me"
+        "url": "http://api.consult.dev/admin/me"
       }
     ]
   },
@@ -309,7 +390,36 @@
     "name": "GetAdminRefresh_token",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/refresh_token"
+        "url": "http://api.consult.dev/admin/refresh_token"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/admin/soft_issues/softdelete_count",
+    "title": "回收站中问题的总数",
+    "group": "Admin",
+    "description": "<p>回收站中问题的总数</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+    "name": "GetAdminSoft_issuesSoftdelete_count",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.dev/admin/soft_issues/softdelete_count"
       }
     ]
   },
@@ -352,7 +462,7 @@
     "name": "PostAdminCommentStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/comment/store"
+        "url": "http://api.consult.dev/admin/comment/store"
       }
     ]
   },
@@ -395,7 +505,7 @@
     "name": "PostAdminCreate",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/create"
+        "url": "http://api.consult.dev/admin/create"
       }
     ]
   },
@@ -431,7 +541,7 @@
     "name": "PostAdminLogin",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/login"
+        "url": "http://api.consult.dev/admin/login"
       }
     ]
   },
@@ -469,7 +579,7 @@
     "name": "GetIssueShowOffsetLimit",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/issue/show/:offset/:limit"
+        "url": "http://api.consult.dev/issue/show/:offset/:limit"
       }
     ]
   },
@@ -512,7 +622,7 @@
     "name": "PostIssueStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/issue/store"
+        "url": "http://api.consult.dev/issue/store"
       }
     ]
   },
@@ -542,7 +652,7 @@
     "name": "GetWx_userLinkageParent_id",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/wx_user/linkage/:parent_id"
+        "url": "http://api.consult.dev/wx_user/linkage/:parent_id"
       }
     ]
   },
@@ -629,7 +739,7 @@
     "name": "PostWx_userStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/wx_user/store"
+        "url": "http://api.consult.dev/wx_user/store"
       }
     ]
   }

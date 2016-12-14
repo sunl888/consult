@@ -60,8 +60,6 @@ $api->post('issue/store', "IssueController@store");
  */
 $api->get('issue/show/{offset?}/{limit?}',"IssueController@show");
 
-
-////////////////////Admin////////////////////////////
 /**
  * @api {POST} /admin/login 管理员登录
  * @apiGroup Admin
@@ -90,6 +88,7 @@ $api->post('admin/create', "AuthenticateController@create");
  */
 $api->get('admin/refresh_token', "AuthenticateController@refreshToken");
 
+
 $api->group(['middleware' => 'jwt.auth'], function ($api) {
     /**
      * @api {GET} /admin/me 获取管理员信息
@@ -100,7 +99,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/me', "AuthenticateController@getAuthenticatedUser");
     /**
-     * @api {GET} /admin/lists/:offset/:limit 获取所有没有被软删除的问题
+     * @api {GET} /admin/issue/:offset/:limit 获取所有没有被软删除的问题
      * @apiGroup Admin
      * @apiDescription 获取所有的问题以及问题的详细信息
      * @apiVersion 0.0.1
@@ -108,15 +107,15 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      * @apiParam {Number} limit=5 每页显示的个数
      * @apiParam {String} token token
      */
-    $api->get('admin/lists/{offset?}/{limit?}', "CommentController@lists");
+    $api->get('admin/issue/{offset?}/{limit?}', "CommentController@lists");
     /**
-     * @api {GET} /admin/lists/count 获取所有没有被软删除的问题的总数
+     * @api {GET} /admin/issues/count 获取所有没有被软删除的问题的总数
      * @apiGroup Admin
      * @apiDescription 获取所有没有被软删除的问题的总数
      * @apiVersion 0.0.1
      * @apiParam {String} token token
      */
-    $api->get('admin/lists/count', "CommentController@count");
+    $api->get('admin/issues/count', "CommentController@lists_count");
     /**
      * @api {POST} /admin/comment/store 回复某个问题
      * @apiGroup Admin
@@ -156,13 +155,13 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      */
     $api->get('admin/issue/list_softdel/{offset?}/{limit?}', "CommentController@only_trashed");
     /**
-     * @api {GET} /admin/issue/softdelete_count 回收站中问题的总数
+     * @api {GET} /admin/soft_issues/softdelete_count 回收站中问题的总数
      * @apiGroup Admin
      * @apiDescription 回收站中问题的总数
      * @apiVersion 0.0.1
      * @apiParam {String} token token
      */
-    $api->get('admin/issue/softdelete_count', "CommentController@softDeleteCount");
+    $api->get('admin/soft_issues/softdelete_count', "CommentController@softDeleteCount");
     /**
      * @api {GET} /admin/issue/restore/:issue_id 恢复被软删除的问题
      * @apiGroup Admin

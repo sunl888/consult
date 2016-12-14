@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "考生咨询网站相关api文档",
   "title": "招生咨询api说明文档",
-  "url" : "http://api.consult.coder4me.cn",
-  "sampleUrl": "http://api.consult.coder4me.cn",
+  "url" : "http://api.consult.dev",
+  "sampleUrl": "http://api.consult.dev",
   "header": {
     "title": "招生咨询",
     "filename": "header.md"
