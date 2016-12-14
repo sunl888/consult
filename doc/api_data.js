@@ -31,11 +31,7 @@ define({ "api": [
     "name": "GetAdminIssueDelete",
     "sampleRequest": [
       {
-<<<<<<< HEAD
-        "url": "http://api.consult.coder4me.cn/admin/issue/delete/:issue_id"
-=======
         "url": "http://api.consult.dev/admin/issue/delete"
->>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
@@ -80,11 +76,7 @@ define({ "api": [
     "name": "GetAdminIssueList_softdel",
     "sampleRequest": [
       {
-<<<<<<< HEAD
-        "url": "http://api.consult.coder4me.cn/admin/issue/list_softdel/:offset/:limit"
-=======
         "url": "http://api.consult.dev/admin/issue/list_softdel"
->>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
@@ -129,11 +121,7 @@ define({ "api": [
     "name": "GetAdminIssueLists",
     "sampleRequest": [
       {
-<<<<<<< HEAD
-        "url": "http://api.consult.coder4me.cn/admin/issue/lists/offset=:offset/limit=:limit"
-=======
         "url": "http://api.consult.dev/admin/issue/lists"
->>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
@@ -169,11 +157,7 @@ define({ "api": [
     "name": "GetAdminIssueRestore",
     "sampleRequest": [
       {
-<<<<<<< HEAD
-        "url": "http://api.consult.coder4me.cn/admin/issue/restore/:issue_id"
-=======
         "url": "http://api.consult.dev/admin/issue/restore"
->>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
@@ -209,11 +193,7 @@ define({ "api": [
     "name": "GetAdminIssueSoftdelete",
     "sampleRequest": [
       {
-<<<<<<< HEAD
-        "url": "http://api.consult.coder4me.cn/admin/issue/softdelete/:issue_id"
-=======
         "url": "http://api.consult.dev/admin/issue/softdelete"
->>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
       }
     ]
   },
@@ -242,7 +222,7 @@ define({ "api": [
     "name": "GetAdminIssuesCount",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/issues/count"
+        "url": "http://api.consult.dev/admin/issues/count"
       }
     ]
   },
@@ -271,7 +251,7 @@ define({ "api": [
     "name": "GetAdminMe",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/me"
+        "url": "http://api.consult.dev/admin/me"
       }
     ]
   },
@@ -300,7 +280,7 @@ define({ "api": [
     "name": "GetAdminRefresh_token",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/refresh_token"
+        "url": "http://api.consult.dev/admin/refresh_token"
       }
     ]
   },
@@ -329,7 +309,7 @@ define({ "api": [
     "name": "GetAdminSoft_issuesSoftdelete_count",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/soft_issues/softdelete_count"
+        "url": "http://api.consult.dev/admin/soft_issues/softdelete_count"
       }
     ]
   },
@@ -372,7 +352,7 @@ define({ "api": [
     "name": "PostAdminCommentStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/comment/store"
+        "url": "http://api.consult.dev/admin/comment/store"
       }
     ]
   },
@@ -415,7 +395,7 @@ define({ "api": [
     "name": "PostAdminCreate",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/create"
+        "url": "http://api.consult.dev/admin/create"
       }
     ]
   },
@@ -451,7 +431,7 @@ define({ "api": [
     "name": "PostAdminLogin",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/login"
+        "url": "http://api.consult.dev/admin/login"
       }
     ]
   },
@@ -489,7 +469,7 @@ define({ "api": [
     "name": "GetIssueShowOffsetLimit",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/issue/show/:offset/:limit"
+        "url": "http://api.consult.dev/issue/show/:offset/:limit"
       }
     ]
   },
@@ -532,7 +512,7 @@ define({ "api": [
     "name": "PostIssueStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/issue/store"
+        "url": "http://api.consult.dev/issue/store"
       }
     ]
   },
@@ -562,7 +542,7 @@ define({ "api": [
     "name": "GetWx_userLinkageParent_id",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/wx_user/linkage/:parent_id"
+        "url": "http://api.consult.dev/wx_user/linkage/:parent_id"
       }
     ]
   },
@@ -649,7 +629,7 @@ define({ "api": [
     "name": "PostWx_userStore",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/wx_user/store"
+        "url": "http://api.consult.dev/wx_user/store"
       }
     ]
   }

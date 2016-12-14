@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "考生咨询网站相关api文档",
   "title": "招生咨询api说明文档",
-  "url": "http://api.consult.coder4me.cn",
-  "sampleUrl": "http://api.consult.coder4me.cn",
+  "url": "http://api.consult.dev",
+  "sampleUrl": "http://api.consult.dev",
   "header": {
     "title": "招生咨询",
     "content": ""
@@ -20,11 +20,7 @@
   "apidoc": "0.2.0",
   "generator": {
     "name": "apidoc",
-<<<<<<< HEAD
-    "time": "2016-12-14T15:30:18.178Z",
-=======
-    "time": "2016-12-14T15:59:36.356Z",
->>>>>>> 22d50bc2b99a95794d135481bc0a6ea9206fee0c
+    "time": "2016-12-14T16:02:23.756Z",
     "url": "http://apidocjs.com",
     "version": "0.16.1"
   }
