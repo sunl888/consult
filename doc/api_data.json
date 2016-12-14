@@ -1,7 +1,7 @@
 [
   {
     "type": "GET",
-    "url": "/admin/issue/delete",
+    "url": "/admin/issue/delete/:issue_id",
     "title": "对某个问题强制删除",
     "group": "Admin",
     "description": "<p>对某个问题强制删除</p>",
@@ -28,23 +28,39 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueDelete",
+    "name": "GetAdminIssueDeleteIssue_id",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/issue/delete"
+        "url": "http://api.consult.coder4me.cn/admin/issue/delete/:issue_id"
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/issue/list_only_trashed",
-    "title": "只显示被软删除的问题",
+    "url": "/admin/issue/list_softdel/:offset/:limit",
+    "title": "分页显示被软删除的问题",
     "group": "Admin",
-    "description": "<p>只显示被软删除的问题</p>",
+    "description": "<p>分页显示被软删除的问题</p>",
     "version": "0.0.1",
     "parameter": {
       "fields": {
         "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>偏移量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "defaultValue": "5",
+            "description": "<p>每页显示的个数</p>"
+          },
           {
             "group": "Parameter",
             "type": "String",
@@ -57,16 +73,16 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueList_only_trashed",
+    "name": "GetAdminIssueList_softdelOffsetLimit",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/issue/list_only_trashed"
+        "url": "http://api.consult.coder4me.cn/admin/issue/list_softdel/:offset/:limit"
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/issue/restore",
+    "url": "/admin/issue/restore/:issue_id",
     "title": "恢复被软删除的问题",
     "group": "Admin",
     "description": "<p>恢复被软删除的问题</p>",
@@ -93,16 +109,16 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueRestore",
+    "name": "GetAdminIssueRestoreIssue_id",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/issue/restore"
+        "url": "http://api.consult.coder4me.cn/admin/issue/restore/:issue_id"
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/issue/softdelete",
+    "url": "/admin/issue/softdelete/:issue_id",
     "title": "对某个问题软删除",
     "group": "Admin",
     "description": "<p>对某个问题软删除</p>",
@@ -129,19 +145,19 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminIssueSoftdelete",
+    "name": "GetAdminIssueSoftdeleteIssue_id",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/issue/softdelete"
+        "url": "http://api.consult.coder4me.cn/admin/issue/softdelete/:issue_id"
       }
     ]
   },
   {
     "type": "GET",
-    "url": "/admin/lists",
-    "title": "获取所有的问题",
+    "url": "/admin/issue/softdelete_count",
+    "title": "回收站中问题的总数",
     "group": "Admin",
-    "description": "<p>获取所有的问题以及问题的详细信息</p>",
+    "description": "<p>回收站中问题的总数</p>",
     "version": "0.0.1",
     "parameter": {
       "fields": {
@@ -158,10 +174,84 @@
     },
     "filename": "routes/api.php",
     "groupTitle": "Admin",
-    "name": "GetAdminLists",
+    "name": "GetAdminIssueSoftdelete_count",
     "sampleRequest": [
       {
-        "url": "http://api.consult.coder4me.cn/admin/lists"
+        "url": "http://api.consult.coder4me.cn/admin/issue/softdelete_count"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/admin/lists/count",
+    "title": "获取所有没有被软删除的问题的总数",
+    "group": "Admin",
+    "description": "<p>获取所有没有被软删除的问题的总数</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+    "name": "GetAdminListsCount",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.coder4me.cn/admin/lists/count"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/admin/lists/:offset/:limit",
+    "title": "获取所有没有被软删除的问题",
+    "group": "Admin",
+    "description": "<p>获取所有的问题以及问题的详细信息</p>",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "offset",
+            "defaultValue": "0",
+            "description": "<p>偏移量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "defaultValue": "5",
+            "description": "<p>每页显示的个数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "filename": "routes/api.php",
+    "groupTitle": "Admin",
+    "name": "GetAdminListsOffsetLimit",
+    "sampleRequest": [
+      {
+        "url": "http://api.consult.coder4me.cn/admin/lists/:offset/:limit"
       }
     ]
   },
