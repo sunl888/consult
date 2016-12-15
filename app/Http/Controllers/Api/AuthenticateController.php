@@ -43,7 +43,7 @@ class AuthenticateController extends Controller
         try {
             // 验证用户名和密码并创建一个token
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['message' => '用户名或密码错误.'], 401);
+                return response()->json(['message' => '用户名或密码错误.'], 402);
             }
         } catch (JWTException $e) {
             // 创建token出错了
