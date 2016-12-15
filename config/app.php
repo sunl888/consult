@@ -180,10 +180,10 @@ return [
 
         //
         Dingo\Api\Provider\LaravelServiceProvider::class,
-        Barryvdh\Cors\ServiceProvider::class,//跨域请求
+        //Barryvdh\Cors\ServiceProvider::class,//跨域请求
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,//导出数据库表到seed
-        Barryvdh\Debugbar\ServiceProvider::class,//debug
+        //Barryvdh\Debugbar\ServiceProvider::class,//debug
     ],
 
     /*
