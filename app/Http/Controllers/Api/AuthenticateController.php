@@ -58,7 +58,7 @@ class AuthenticateController extends Controller
      * @param $token
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getAuthenticatedUser($token=null)
+    public function getAuthenticatedUser()
     {
         try {
             if (! $user = JWTAuth::parseToken()->authenticate()) {
