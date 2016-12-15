@@ -56,7 +56,7 @@ class IssueController extends Controller
         try{
             $validator = Validator::make($request->input(), $this->rule, $this->mess);
             if($validator->fails()){
-                throw new \Exception('数据验证失败咯:'.$validator->errors()->first());
+                throw new \Exception($validator->errors()->first());
             }
 
             $data = [

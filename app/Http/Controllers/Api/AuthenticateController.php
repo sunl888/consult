@@ -119,7 +119,7 @@ class AuthenticateController extends Controller
     {
         $validator = Validator::make($data, $this->rule,$this->mess);
         if ($validator->fails()) {
-            throw new StoreResourceFailedException('数据验证失败!', $validator->errors()->first());
+            throw new StoreResourceFailedException($validator->errors()->first());
         }
         return $validator;
     }

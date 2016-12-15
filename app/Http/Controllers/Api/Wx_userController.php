@@ -19,9 +19,9 @@ class Wx_userController extends Controller
     ];
     protected $mess = [
         'name.required' =>'用户名必须填写.',
-        'email.email' =>'请填写正确的邮箱.',
         'phone.required' =>'手机号码必须要填写.',
-        'phone.regex' =>'请填写正确的手机号码'
+        'phone.regex' =>'请填写正确的手机号码',
+        'email.email' =>'请填写正确的邮箱.'
     ];
 
     /**
@@ -46,7 +46,7 @@ class Wx_userController extends Controller
         try{
             $validator = Validator::make($request->input(), $this->rule, $this->mess);
             if($validator->fails()){
-                throw new \Exception('数据验证失败:'.$validator->errors()->first());
+                throw new \Exception($validator->errors()->first());
             }
             $data = [
                 'name'       =>$request->get('name'),

@@ -76,7 +76,7 @@ class CommentController extends Controller
         try{
             $validator = Validator::make($comment, $this->rule, $this->mess);
             if($validator->fails()){
-                throw new \Exception('数据验证失败:'.$validator->errors()->first());
+                throw new \Exception($validator->errors()->first());
             }
             $comment['uid'] = $this->user['id'];
             $comm = Comment::create($comment);
