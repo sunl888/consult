@@ -7,7 +7,9 @@ use App\Models\Wx_users;
 use Dingo\Api\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Mockery\CountValidator\Exception;
 
 class Wx_userController extends Controller
 {
@@ -21,6 +23,18 @@ class Wx_userController extends Controller
     ];
 
     /**
+     * 用户信息
+     * @return mixed
+     * @throws \Exception
+     */
+    public function userInfo(){
+            $user_id = Input::get('user_id');
+            if(empty($user_id)){
+                throw new \Exception('用户id不能为空.');
+            }
+            return Wx_users::findOrFail($user_id);
+    }
+    /**
      * 添加用户信息.
      * @param Request $request
      * @return static
@@ -32,8 +46,6 @@ class Wx_userController extends Controller
             if($validator->fails()){
                 throw new \Exception('数据验证失败.');
             }
-            /*echo 'OK';
-            dd($request->all());*/
             $data = [
                 'name'       =>$request->get('name'),
                 'phone'      =>$request->get('phone'),
