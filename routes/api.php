@@ -115,6 +115,7 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      * @apiDescription 用户信息
      * @apiVersion 0.0.1
      * @apiParam {Number} user_id 用户id,找不到则返回错误信息
+     * @apiParam {String} token token
      * @apiErrorExample {json} Error-Response:
      *  {
      *      "message": "No query results for model [App\\Models\\Wx_users] 2.",
