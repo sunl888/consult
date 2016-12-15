@@ -123,6 +123,4 @@ class AuthenticateController extends Controller
         }
         return $validator;
     }
-
-
 }
