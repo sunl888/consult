@@ -11,7 +11,6 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
-
         return view('index');
     }
 
@@ -20,7 +19,6 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function admin(){
-
         return view('admin.index');
     }
 }

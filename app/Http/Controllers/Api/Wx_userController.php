@@ -9,17 +9,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
-use Mockery\CountValidator\Exception;
 
 class Wx_userController extends Controller
 {
     protected $rule = [
-        //'openid' =>'required|unique:wx_users,openid',
         'name' =>'required',
         'email' =>'email',
         'phone'=>['required','regex:/^1[34578][0-9]{9}$/'],
-
-        //'email' =>['required_with:email','email']//当email有值的情况下验证其是否合法
+    ];
+    protected $mess = [
+        'name.required' =>'用户名必须填写.',
+        'email.email' =>'请填写正确的邮箱.',
+        'phone.required' =>'手机号码必须要填写.',
+        'phone.regex' =>'请填写正确的手机号码'
     ];
 
     /**
@@ -42,9 +44,9 @@ class Wx_userController extends Controller
      */
     public function store(Request $request){
         try{
-            $validator = Validator::make($request->input() , $this->rule);
+            $validator = Validator::make($request->input(), $this->rule, $this->mess);
             if($validator->fails()){
-                throw new \Exception('数据验证失败.');
+                throw new \Exception('数据验证失败:'.$validator->errors()->first());
             }
             $data = [
                 'name'       =>$request->get('name'),
@@ -58,7 +60,7 @@ class Wx_userController extends Controller
             ];
             $wx_user = Wx_users::create($data);
             if(!$wx_user){
-                throw new \Exception('数据插入失败.');
+                throw new \Exception('数据插入失败,未知错误.');
             }
         }catch(\Exception $e){
             throw new \Exception($e->getMessage());
@@ -74,11 +76,4 @@ class Wx_userController extends Controller
     public function linkage($parent_id = 0){
         return Region::where(['parent_id'=>$parent_id])->get();
     }
-
-    /**
-     * 文理科
-     * @return array
-     */
-    /*public function science(){
-    }*/
 }

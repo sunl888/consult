@@ -6,7 +6,7 @@ use App\Http\Controllers\Api;
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
-| 11
+|
 | 生成文档命令:  apidoc -i routes/ -o doc/
 |
 */
@@ -34,7 +34,7 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
  * @apiVersion 1.1.0
  * @apiErrorExample {json} Error-Response:
  *  {
- *      "message": "数据验证失败.",
+ *      "message": "数据验证失败.{失败信息}",
  *      "status_code": 500
  *  }
  */

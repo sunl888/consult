@@ -20,6 +20,10 @@ class IssueController extends Controller
         'description' =>'required'
     ];
 
+    protected $mess = [
+        'title.required' =>'标题不能为空.',
+        'description.required' =>'内容不能为空.',
+    ];
     /**
      * 显示所有的已回答的问题
      * @return \Illuminate\Database\Eloquent\Collection|static[]
@@ -50,9 +54,9 @@ class IssueController extends Controller
      */
     public function store(Request $request){
         try{
-            $validator = Validator::make($request->input(), $this->rule);
+            $validator = Validator::make($request->input(), $this->rule, $this->mess);
             if($validator->fails()){
-                throw new \Exception('数据验证失败咯.');
+                throw new \Exception('数据验证失败咯:'.$validator->errors()->first());
             }
 
             $data = [
@@ -70,5 +74,4 @@ class IssueController extends Controller
         }
         return $issue;
     }
-
 }
