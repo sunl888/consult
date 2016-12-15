@@ -34,7 +34,7 @@ $api->get('wx_user/linkage/{parent_id?}', "Wx_userController@linkage");
  * @apiVersion 1.1.0
  * @apiErrorExample {json} Error-Response:
  *  {
- *      "message": "数据验证失败.",
+ *      "message": "数据验证失败.{失败信息}",
  *      "status_code": 500
  *  }
  */
@@ -107,7 +107,23 @@ $api->group(['middleware' => 'jwt.auth'], function ($api) {
      * @apiParam {Number} limit=5 每页显示的个数
      * @apiParam {String} token token
      */
+
     $api->get('admin/issue/lists', "CommentController@lists");
+    /**
+     * @api {GET} /wx_user/userinfo 用户信息
+     * @apiGroup issue
+     * @apiDescription 用户信息
+     * @apiVersion 0.0.1
+     * @apiParam {Number} user_id 用户id,找不到则返回错误信息
+     * @apiParam {String} token token
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *      "message": "No query results for model [App\\Models\\Wx_users] 2.",
+     *      "status_code": 500
+     *  }
+     */
+    $api->get('wx_user/userinfo', "Wx_userController@userInfo");
+
     /**
      * @api {GET} /admin/issues/count 获取所有没有被软删除的问题的总数
      * @apiGroup Admin

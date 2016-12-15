@@ -23,7 +23,15 @@ class AuthenticateController extends Controller
         'password' =>'required|min:5',
         'email' =>'required|email|max:255'
     ];
-
+    protected $mess = [
+        'name.required' =>'用户名必须填写',
+        'name.unique' =>'用户名已存在',
+        'name.max'=>'用户名最长255位',
+        'password.required' =>'密码必须填写',
+        'password.min' =>'密码最短为5位',
+        'email.email' =>'请填写正确的邮箱',
+        'email.required' =>'邮箱必须填写喔',
+    ];
     /**
      * 登录
      * @param Request $request
@@ -50,20 +58,19 @@ class AuthenticateController extends Controller
      * @param $token
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getAuthenticatedUser($token=null)
+    public function getAuthenticatedUser()
     {
         try {
             if (! $user = JWTAuth::parseToken()->authenticate()) {
-                return response()->json(['user_not_found'], 404);
+                return response()->json(['没找到该用户'], 404);
             }
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            return response()->json(['token_expired'], $e->getMessage());
+            return response()->json(['token过期'], $e->getMessage());
         } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-            return response()->json(['token_invalid'], $e->getMessage());
+            return response()->json(['token无效'], $e->getMessage());
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
-            return response()->json(['token_absent'], $e->getMessage());
+            return response()->json(['token不存在'], $e->getMessage());
         }
-        // the token is valid and we have found the user via the sub claim
         return response()->json(compact('user'));
     }
 
@@ -110,12 +117,10 @@ class AuthenticateController extends Controller
      */
     protected function validator(array $data)
     {
-        $validator = Validator::make($data, $this->rule);
+        $validator = Validator::make($data, $this->rule,$this->mess);
         if ($validator->fails()) {
-            throw new StoreResourceFailedException('数据验证失败!', $validator->errors());
+            throw new StoreResourceFailedException($validator->errors()->first());
         }
         return $validator;
     }
-
-
 }

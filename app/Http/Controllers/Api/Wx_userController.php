@@ -7,19 +7,35 @@ use App\Models\Wx_users;
 use Dingo\Api\Http\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
 class Wx_userController extends Controller
 {
     protected $rule = [
-        //'openid' =>'required|unique:wx_users,openid',
         'name' =>'required',
         'email' =>'email',
         'phone'=>['required','regex:/^1[34578][0-9]{9}$/'],
-
-        //'email' =>['required_with:email','email']//当email有值的情况下验证其是否合法
+    ];
+    protected $mess = [
+        'name.required' =>'用户名必须填写.',
+        'phone.required' =>'手机号码必须要填写.',
+        'phone.regex' =>'请填写正确的手机号码',
+        'email.email' =>'请填写正确的邮箱.'
     ];
 
+    /**
+     * 用户信息
+     * @return mixed
+     * @throws \Exception
+     */
+    public function userInfo(){
+            $user_id = Input::get('user_id');
+            if(empty($user_id)){
+                throw new \Exception('用户id不能为空.');
+            }
+            return Wx_users::findOrFail($user_id);
+    }
     /**
      * 添加用户信息.
      * @param Request $request
@@ -28,12 +44,10 @@ class Wx_userController extends Controller
      */
     public function store(Request $request){
         try{
-            $validator = Validator::make($request->input() , $this->rule);
+            $validator = Validator::make($request->input(), $this->rule, $this->mess);
             if($validator->fails()){
-                throw new \Exception('数据验证失败.');
+                throw new \Exception($validator->errors()->first());
             }
-            /*echo 'OK';
-            dd($request->all());*/
             $data = [
                 'name'       =>$request->get('name'),
                 'phone'      =>$request->get('phone'),
@@ -46,7 +60,7 @@ class Wx_userController extends Controller
             ];
             $wx_user = Wx_users::create($data);
             if(!$wx_user){
-                throw new \Exception('数据插入失败.');
+                throw new \Exception('数据插入失败,未知错误.');
             }
         }catch(\Exception $e){
             throw new \Exception($e->getMessage());
@@ -62,11 +76,4 @@ class Wx_userController extends Controller
     public function linkage($parent_id = 0){
         return Region::where(['parent_id'=>$parent_id])->get();
     }
-
-    /**
-     * 文理科
-     * @return array
-     */
-    /*public function science(){
-    }*/
 }

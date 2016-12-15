@@ -14,9 +14,18 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class CommentController extends Controller
 {
     protected $user = null;
+
     protected $rule = [
         'answer' =>'required|max:255',
         'issue_id' =>'required|exists:issues,id|unique:comments' //issue_id必须已经存在于一个数据库的某个表中
+    ];
+
+    protected $mess = [
+        'answer.required' =>'你还没有填写回复的内容呢',
+        'answer.max' =>'回复的长度最长255位喔',
+        'issue_id.required' =>'你要回复哪个问题?',
+        'issue_id.exists' =>'问题不存在哦',
+        'issue_id.unique' =>'这个问题已经回复过了,不需要再回复了喔'
     ];
 
     public function __construct()
@@ -65,14 +74,14 @@ class CommentController extends Controller
     public function store(Request $request){
         $comment = $request->only('answer','issue_id');
         try{
-            $validator = Validator::make($comment , $this->rule);
+            $validator = Validator::make($comment, $this->rule, $this->mess);
             if($validator->fails()){
-                throw new \Exception('数据验证失败:'.$validator->errors());
+                throw new \Exception($validator->errors()->first());
             }
             $comment['uid'] = $this->user['id'];
             $comm = Comment::create($comment);
             if(!$comm){
-                throw new \Exception('回复失败');
+                throw new \Exception('回复失败,未知错误.');
             }
         }catch(\Exception $e){
             throw new \Exception($e->getMessage());
@@ -85,7 +94,10 @@ class CommentController extends Controller
      * @return mixed
      */
     public function softdelete(){
-        $issue_id = empty(Input::get('issue_id')) ?0:Input::get('issue_id');
+        $issue_id = Input::get('issue_id');
+        if(empty($issue_id)){
+            throw new \Exception('issue_id is empty.');
+        }
         return Issue::where(['id'=>$issue_id])->delete();
     }
 
@@ -94,7 +106,10 @@ class CommentController extends Controller
      * @return bool|mixed|null
      */
     public function delete(){
-        $issue_id = empty(Input::get('issue_id')) ?0:Input::get('issue_id');
+        $issue_id = Input::get('issue_id');
+        if(empty($issue_id)){
+            throw new \Exception('issue_id is empty.');
+        }
         return Issue::where(['id'=>$issue_id])->forceDelete();
     }
 
@@ -133,7 +148,10 @@ class CommentController extends Controller
      * @return mixed
      */
     public function restore(){
-        $issue_id = empty(Input::get('issue_id')) ?0:Input::get('issue_id');
+        $issue_id = Input::get('issue_id');
+        if(empty($issue_id)){
+            throw new \Exception('issue_id is empty.');
+        }
         return Issue::where(['id'=>$issue_id])->restore();
     }
 }
