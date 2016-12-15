@@ -13,3 +13,4 @@
 
 Route::get('/index', 'HomeController@index');
 Route::get('/', 'HomeController@index');
+Route::get('/admin', 'HomeController@admin');
