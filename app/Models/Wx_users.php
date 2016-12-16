@@ -18,7 +18,7 @@ class Wx_users extends Model
         'city',
         'area',
         'course',
-        'old_school'
+        'old_school',
     ];
 
     public function issues(){

@@ -21,7 +21,7 @@ class Wx_userController extends Controller
         'name.required' =>'用户名必须填写.',
         'phone.required' =>'手机号码必须要填写.',
         'phone.regex' =>'请填写正确的手机号码',
-        'email.email' =>'请填写正确的邮箱.'
+        'email.email' =>'请填写正确的邮箱.',
     ];
 
     /**
@@ -42,6 +42,7 @@ class Wx_userController extends Controller
      * @return static
      * @throws \Exception
      */
+
     public function store(Request $request){
         try{
             $validator = Validator::make($request->input(), $this->rule, $this->mess);
@@ -55,7 +56,8 @@ class Wx_userController extends Controller
                 'province'   =>$request->get('province'),
                 'city'       =>$request->get('city'),
                 'area'       =>$request->get('area'),
-                'course'     =>$request->get('course'),
+                //成绩必须要给个默认值,否则插入数据库会有错误.
+                'course'     =>empty($request->get('course'))?null:(float)$request->get('course'),
                 'old_school' =>$request->get('old_school'),
             ];
             $wx_user = Wx_users::create($data);
